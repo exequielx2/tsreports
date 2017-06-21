@@ -28,113 +28,87 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReport));
             this._fromReport_panel1 = new System.Windows.Forms.Panel();
-            this._fromReport_toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this._fromReport_panel2 = new System.Windows.Forms.Panel();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this._fromReport_panel1.SuspendLayout();
-            this._fromReport_toolStrip1.SuspendLayout();
+            this._fromReport_dataGridView = new System.Windows.Forms.DataGridView();
+            this._fromReport_panel3 = new System.Windows.Forms.Panel();
+            this._fromReport_labelStatus = new System.Windows.Forms.Label();
+            this._fromReport_labelCantidad = new System.Windows.Forms.Label();
+            this._fromReport_panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._fromReport_dataGridView)).BeginInit();
+            this._fromReport_panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // _fromReport_panel1
             // 
-            this._fromReport_panel1.Controls.Add(this._fromReport_toolStrip1);
             this._fromReport_panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this._fromReport_panel1.Location = new System.Drawing.Point(0, 0);
             this._fromReport_panel1.Name = "_fromReport_panel1";
-            this._fromReport_panel1.Size = new System.Drawing.Size(736, 31);
+            this._fromReport_panel1.Size = new System.Drawing.Size(556, 31);
             this._fromReport_panel1.TabIndex = 0;
-            // 
-            // _fromReport_toolStrip1
-            // 
-            this._fromReport_toolStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._fromReport_toolStrip1.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this._fromReport_toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripSeparator1,
-            this.toolStripSplitButton1,
-            this.toolStripButton2,
-            this.toolStripButton3,
-            this.toolStripComboBox1,
-            this.toolStripProgressBar1});
-            this._fromReport_toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this._fromReport_toolStrip1.Name = "_fromReport_toolStrip1";
-            this._fromReport_toolStrip1.Size = new System.Drawing.Size(736, 31);
-            this._fromReport_toolStrip1.TabIndex = 0;
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 28);
-            this.toolStripButton1.Text = "toolStripButton1";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
-            // 
-            // toolStripSplitButton1
-            // 
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 28);
-            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 28);
-            this.toolStripButton2.Text = "toolStripButton2";
             // 
             // _fromReport_panel2
             // 
             this._fromReport_panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._fromReport_panel2.Location = new System.Drawing.Point(13, 38);
+            this._fromReport_panel2.Controls.Add(this._fromReport_dataGridView);
+            this._fromReport_panel2.Location = new System.Drawing.Point(0, 38);
             this._fromReport_panel2.Name = "_fromReport_panel2";
-            this._fromReport_panel2.Size = new System.Drawing.Size(711, 361);
+            this._fromReport_panel2.Size = new System.Drawing.Size(556, 388);
             this._fromReport_panel2.TabIndex = 1;
             // 
-            // toolStripButton3
+            // _fromReport_dataGridView
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 28);
-            this.toolStripButton3.Text = "toolStripButton3";
+            this._fromReport_dataGridView.AllowUserToOrderColumns = true;
+            this._fromReport_dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._fromReport_dataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this._fromReport_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._fromReport_dataGridView.GridColor = System.Drawing.SystemColors.Control;
+            this._fromReport_dataGridView.Location = new System.Drawing.Point(4, 4);
+            this._fromReport_dataGridView.Name = "_fromReport_dataGridView";
+            this._fromReport_dataGridView.Size = new System.Drawing.Size(549, 381);
+            this._fromReport_dataGridView.TabIndex = 0;
             // 
-            // toolStripComboBox1
+            // _fromReport_panel3
             // 
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 31);
+            this._fromReport_panel3.Controls.Add(this._fromReport_labelStatus);
+            this._fromReport_panel3.Controls.Add(this._fromReport_labelCantidad);
+            this._fromReport_panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this._fromReport_panel3.Location = new System.Drawing.Point(0, 432);
+            this._fromReport_panel3.Name = "_fromReport_panel3";
+            this._fromReport_panel3.Size = new System.Drawing.Size(556, 29);
+            this._fromReport_panel3.TabIndex = 2;
             // 
-            // toolStripProgressBar1
+            // _fromReport_labelStatus
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 28);
+            this._fromReport_labelStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this._fromReport_labelStatus.AutoSize = true;
+            this._fromReport_labelStatus.Location = new System.Drawing.Point(3, 7);
+            this._fromReport_labelStatus.Name = "_fromReport_labelStatus";
+            this._fromReport_labelStatus.Size = new System.Drawing.Size(10, 13);
+            this._fromReport_labelStatus.TabIndex = 1;
+            this._fromReport_labelStatus.Text = "-";
+            // 
+            // _fromReport_labelCantidad
+            // 
+            this._fromReport_labelCantidad.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this._fromReport_labelCantidad.AutoSize = true;
+            this._fromReport_labelCantidad.Location = new System.Drawing.Point(499, 7);
+            this._fromReport_labelCantidad.Name = "_fromReport_labelCantidad";
+            this._fromReport_labelCantidad.Size = new System.Drawing.Size(13, 13);
+            this._fromReport_labelCantidad.TabIndex = 0;
+            this._fromReport_labelCantidad.Text = "0";
+            this._fromReport_labelCantidad.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 411);
+            this.ClientSize = new System.Drawing.Size(556, 461);
+            this.Controls.Add(this._fromReport_panel3);
             this.Controls.Add(this._fromReport_panel2);
             this.Controls.Add(this._fromReport_panel1);
             this.Name = "FormReport";
@@ -142,10 +116,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TSReports";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this._fromReport_panel1.ResumeLayout(false);
-            this._fromReport_panel1.PerformLayout();
-            this._fromReport_toolStrip1.ResumeLayout(false);
-            this._fromReport_toolStrip1.PerformLayout();
+            this.Load += new System.EventHandler(this.FormReport_Load);
+            this._fromReport_panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._fromReport_dataGridView)).EndInit();
+            this._fromReport_panel3.ResumeLayout(false);
+            this._fromReport_panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -153,14 +128,10 @@
         #endregion
 
         private System.Windows.Forms.Panel _fromReport_panel1;
-        private System.Windows.Forms.ToolStrip _fromReport_toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.Panel _fromReport_panel2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.Panel _fromReport_panel3;
+        private System.Windows.Forms.Label _fromReport_labelCantidad;
+        private System.Windows.Forms.DataGridView _fromReport_dataGridView;
+        private System.Windows.Forms.Label _fromReport_labelStatus;
     }
 }

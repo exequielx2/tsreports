@@ -11,7 +11,6 @@ namespace TSReports.Views
 {
     public partial class FormPrincipal : Form
     {
-        private List<Control> dynamic_controls = new List<Control>();
 
         public FormPrincipal()
         {
@@ -25,8 +24,8 @@ namespace TSReports.Views
         }
 
         private void _formPrincipal_button_aplicar_Click(object sender, EventArgs e)
-        {
-            FormReport _formReport = new FormReport(dynamic_controls);
+        { 
+            FormReport _formReport = new FormReport(Reportes.Instance.Get(Int32.Parse(_formPrincipal_treeView_reportes.SelectedNode.Name)));
             _formReport.Show();
         }
 
@@ -60,7 +59,8 @@ namespace TSReports.Views
                         Label label = new Label();
                         label.Text = campo.titulo + ":";
                         _formPrincipal_flowLayout.Controls.Add(label);
-                        _formPrincipal_flowLayout.Controls.Add(this.getControl(filtro.tipodato));
+                        filtro.control = this.getControl(filtro.tipodato);
+                        _formPrincipal_flowLayout.Controls.Add(filtro.control);
                     }
                 }
             }
@@ -83,15 +83,11 @@ namespace TSReports.Views
                 ((DateTimePicker)control).Format = DateTimePickerFormat.Custom;
                 ((DateTimePicker)control).CustomFormat = "dd-MM-yyyy HH:mm:ss";
             }
-            if (control != null) {
-                dynamic_controls.Add(control);
-            }
             return control;
         }
 
         private void clear_dynamic_controls()
         {
-            this.dynamic_controls = new List<Control>();
             _formPrincipal_flowLayout.Controls.Clear();
         }
 

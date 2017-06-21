@@ -34,8 +34,8 @@
             this._formPrincipal_button_add = new System.Windows.Forms.Button();
             this._formPrincipal_treeView_reportes = new System.Windows.Forms.TreeView();
             this._formPrincipal_panel2 = new System.Windows.Forms.Panel();
-            this._formPrincipal_button_aplicar = new System.Windows.Forms.Button();
             this._formPrincipal_flowLayout = new System.Windows.Forms.FlowLayoutPanel();
+            this._formPrincipal_button_aplicar = new System.Windows.Forms.Button();
             this._formPrincipal_panel1.SuspendLayout();
             this._formPrincipal_panel2.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +47,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this._formPrincipal_textBox_search.Location = new System.Drawing.Point(58, 3);
             this._formPrincipal_textBox_search.Name = "_formPrincipal_textBox_search";
-            this._formPrincipal_textBox_search.Size = new System.Drawing.Size(330, 20);
+            this._formPrincipal_textBox_search.Size = new System.Drawing.Size(273, 20);
             this._formPrincipal_textBox_search.TabIndex = 1;
             // 
             // _formPrincipal_panel1
@@ -59,7 +59,7 @@
             this._formPrincipal_panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this._formPrincipal_panel1.Location = new System.Drawing.Point(0, 0);
             this._formPrincipal_panel1.Name = "_formPrincipal_panel1";
-            this._formPrincipal_panel1.Size = new System.Drawing.Size(394, 405);
+            this._formPrincipal_panel1.Size = new System.Drawing.Size(337, 405);
             this._formPrincipal_panel1.TabIndex = 5;
             // 
             // _formPrincipal_button_delete
@@ -92,7 +92,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this._formPrincipal_treeView_reportes.Location = new System.Drawing.Point(4, 30);
             this._formPrincipal_treeView_reportes.Name = "_formPrincipal_treeView_reportes";
-            this._formPrincipal_treeView_reportes.Size = new System.Drawing.Size(387, 372);
+            this._formPrincipal_treeView_reportes.Size = new System.Drawing.Size(330, 372);
             this._formPrincipal_treeView_reportes.TabIndex = 2;
             this._formPrincipal_treeView_reportes.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this._formPrincipal_treeView_reportes_AfterSelect);
             // 
@@ -101,21 +101,10 @@
             this._formPrincipal_panel2.Controls.Add(this._formPrincipal_flowLayout);
             this._formPrincipal_panel2.Controls.Add(this._formPrincipal_button_aplicar);
             this._formPrincipal_panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._formPrincipal_panel2.Location = new System.Drawing.Point(394, 0);
+            this._formPrincipal_panel2.Location = new System.Drawing.Point(337, 0);
             this._formPrincipal_panel2.Name = "_formPrincipal_panel2";
-            this._formPrincipal_panel2.Size = new System.Drawing.Size(347, 405);
+            this._formPrincipal_panel2.Size = new System.Drawing.Size(308, 405);
             this._formPrincipal_panel2.TabIndex = 6;
-            // 
-            // _formPrincipal_button_aplicar
-            // 
-            this._formPrincipal_button_aplicar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._formPrincipal_button_aplicar.Location = new System.Drawing.Point(260, 370);
-            this._formPrincipal_button_aplicar.Name = "_formPrincipal_button_aplicar";
-            this._formPrincipal_button_aplicar.Size = new System.Drawing.Size(75, 23);
-            this._formPrincipal_button_aplicar.TabIndex = 1;
-            this._formPrincipal_button_aplicar.Text = "Aplicar";
-            this._formPrincipal_button_aplicar.UseVisualStyleBackColor = true;
-            this._formPrincipal_button_aplicar.Click += new System.EventHandler(this._formPrincipal_button_aplicar_Click);
             // 
             // _formPrincipal_flowLayout
             // 
@@ -125,14 +114,25 @@
             this._formPrincipal_flowLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this._formPrincipal_flowLayout.Location = new System.Drawing.Point(7, 4);
             this._formPrincipal_flowLayout.Name = "_formPrincipal_flowLayout";
-            this._formPrincipal_flowLayout.Size = new System.Drawing.Size(328, 360);
+            this._formPrincipal_flowLayout.Size = new System.Drawing.Size(289, 360);
             this._formPrincipal_flowLayout.TabIndex = 2;
+            // 
+            // _formPrincipal_button_aplicar
+            // 
+            this._formPrincipal_button_aplicar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._formPrincipal_button_aplicar.Location = new System.Drawing.Point(221, 370);
+            this._formPrincipal_button_aplicar.Name = "_formPrincipal_button_aplicar";
+            this._formPrincipal_button_aplicar.Size = new System.Drawing.Size(75, 23);
+            this._formPrincipal_button_aplicar.TabIndex = 1;
+            this._formPrincipal_button_aplicar.Text = "Aplicar";
+            this._formPrincipal_button_aplicar.UseVisualStyleBackColor = true;
+            this._formPrincipal_button_aplicar.Click += new System.EventHandler(this._formPrincipal_button_aplicar_Click);
             // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 405);
+            this.ClientSize = new System.Drawing.Size(645, 405);
             this.Controls.Add(this._formPrincipal_panel2);
             this.Controls.Add(this._formPrincipal_panel1);
             this.Name = "FormPrincipal";
