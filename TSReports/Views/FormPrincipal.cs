@@ -24,7 +24,7 @@ namespace TSReports.Views
         }
 
         private void _formPrincipal_button_aplicar_Click(object sender, EventArgs e)
-        { 
+        {
             FormReport _formReport = new FormReport(Reportes.Instance.Get(Int32.Parse(_formPrincipal_treeView_reportes.SelectedNode.Name)));
             _formReport.Show();
         }
@@ -51,44 +51,57 @@ namespace TSReports.Views
 
         private void _formPrincipal_treeView_reportes_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (e.Node.Level > 0) {
-                this.clear_dynamic_controls();
-                Reporte reporte = Reportes.Instance.Get(Int32.Parse(e.Node.Name));
-                foreach (Campo campo in reporte.campos ?? Enumerable.Empty<Campo>()) {
-                    foreach (Filtro filtro in campo.filtros ?? Enumerable.Empty<Filtro>()) {
-                        Label label = new Label();
-                        label.Text = campo.titulo + ":";
-                        _formPrincipal_flowLayout.Controls.Add(label);
-                        filtro.control = this.getControl(filtro.tipodato);
-                        _formPrincipal_flowLayout.Controls.Add(filtro.control);
+            try {
+                if (e.Node.Level > 0) {
+                    _formPrincipal_flowLayout.Controls.Clear();
+                    Reporte reporte = Reportes.Instance.Get(Int32.Parse(e.Node.Name));
+                    foreach (Campo campo in reporte.campos ?? Enumerable.Empty<Campo>()) {
+                        foreach (Filtro filtro in campo.filtros ?? Enumerable.Empty<Filtro>()) {
+                            CheckBox checkbox = new CheckBox();
+                            checkbox.Checked = true;
+                            checkbox.Text = campo.titulo + ":";
+                            filtro.control = new Control[2] { checkbox, this.getControl(filtro.tipodato) };
+                            Panel panel = new Panel();
+                            panel.AutoSize = true;
+                            filtro.control[1].AutoSize = true;
+                            filtro.control[1].Left = checkbox.Width;
+                            panel.Controls.AddRange(filtro.control);
+
+                            _formPrincipal_flowLayout.Controls.Add(panel);
+                        }
                     }
                 }
+            } catch (CustomException cex) {
+                throw cex;
+            } catch (Exception ex) {
+                throw new CustomException(ex);
             }
         }
 
         private Control getControl(string type)
         {
-            Control control = null;
-            if (type.Equals("integer")) {
-                control = new NumericUpDown();
-                ((NumericUpDown)control).Minimum = 0;
-                ((NumericUpDown)control).Maximum = 100000;
-            } else if (type.Equals("varchar")) {
-                control = new TextBox();
-            } else if (type.Equals("boolean")) {
-                control = new CheckBox();
-                ((CheckBox)control).Checked = true;
-            } else if (type.Equals("timestamp")) {
-                control = new DateTimePicker();
-                ((DateTimePicker)control).Format = DateTimePickerFormat.Custom;
-                ((DateTimePicker)control).CustomFormat = "dd-MM-yyyy HH:mm:ss";
+            try {
+                Control control = null;
+                if (type.Equals("integer")) {
+                    control = new NumericUpDown();
+                    ((NumericUpDown)control).Minimum = 0;
+                    ((NumericUpDown)control).Maximum = 100000;
+                } else if (type.Equals("varchar")) {
+                    control = new TextBox();
+                } else if (type.Equals("boolean")) {
+                    control = new CheckBox();
+                    ((CheckBox)control).Checked = true;
+                } else if (type.Equals("timestamp")) {
+                    control = new DateTimePicker();
+                    ((DateTimePicker)control).Format = DateTimePickerFormat.Custom;
+                    ((DateTimePicker)control).CustomFormat = "dd-MM-yyyy HH:mm:ss";
+                }
+                return control;
+            } catch (CustomException cex) {
+                throw cex;
+            } catch (Exception ex) {
+                throw new CustomException(ex);
             }
-            return control;
-        }
-
-        private void clear_dynamic_controls()
-        {
-            _formPrincipal_flowLayout.Controls.Clear();
         }
 
     }

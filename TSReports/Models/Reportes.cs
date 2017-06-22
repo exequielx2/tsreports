@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using System;
 using System.Collections.Generic;
 using TSReports.Models.Entities;
 using TSReports.Services;
@@ -13,7 +12,7 @@ namespace TSReports.Models
 
         private Reportes(){
             this.reportes = new List<Reporte>();
-            this.Actualizar();
+            this.UpdateAll();
         }
 
         public static Reportes Instance {
@@ -25,13 +24,14 @@ namespace TSReports.Models
             }
         }
 
-        public Reportes Actualizar()
+        public Reportes UpdateAll()
         {
-            var resp = RestConnection.Instance.Get("entorno/getentornos");
-            JObject resp2 = JObject.Parse(resp.Content);
-            JArray data = (JArray)resp2["data"];
-            this.reportes = data.ToObject<List<Reporte>>(); 
+            this.reportes = (List<Reporte>)((IRest)ReporteService.Instance).List<Reporte>();
             return this;
+        }
+        public Reporte Update(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Reporte> List()
