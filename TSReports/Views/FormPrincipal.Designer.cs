@@ -49,6 +49,7 @@
             this._formPrincipal_textBox_search.Name = "_formPrincipal_textBox_search";
             this._formPrincipal_textBox_search.Size = new System.Drawing.Size(273, 20);
             this._formPrincipal_textBox_search.TabIndex = 1;
+            this._formPrincipal_textBox_search.TextChanged += new System.EventHandler(this._formPrincipal_textBox_search_TextChanged);
             // 
             // _formPrincipal_panel1
             // 
@@ -72,6 +73,7 @@
             this._formPrincipal_button_delete.TabIndex = 4;
             this._formPrincipal_button_delete.Text = "-";
             this._formPrincipal_button_delete.UseVisualStyleBackColor = true;
+            this._formPrincipal_button_delete.Click += new System.EventHandler(this._formPrincipal_button_delete_Click);
             // 
             // _formPrincipal_button_add
             // 

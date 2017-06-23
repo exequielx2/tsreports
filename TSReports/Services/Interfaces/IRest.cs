@@ -9,5 +9,6 @@ namespace TSReports.Services
         Object Get();
         int Update();
         int Save();
+        bool Delete(int id);
     }
 }

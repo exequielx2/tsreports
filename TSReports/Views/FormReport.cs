@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using ClosedXML.Excel;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,6 +35,7 @@ namespace TSReports.Views
         {
             try {
                 this._fromReport_labelStatus.Text = "Recovering data...";
+                this._fromReport_labelStatus.ForeColor = Color.Red;
                 this.Text = reporte.descripcion;
                 ThreadStart hiloref = new ThreadStart(FillGrid);
                 this.hilo = new Thread(hiloref);
@@ -63,6 +65,12 @@ namespace TSReports.Views
                 dynamic resp;
                 do {
                     resp = ReporteService.Instance.Ejecutar(this.reporte.id, this.limit, this.offset, parametros);
+                    if (resp.data.Count == 0) {
+                        MessageBox.Show("NO DATA FOUND");
+                        this.BeginInvoke((MethodInvoker)delegate () {
+                            this.Close();
+                        });
+                    }
                     foreach (JObject item in resp.data) {
                         if (columns == null) {
                             columns = item.Properties().Select(p => p.Name).ToList();
@@ -85,15 +93,14 @@ namespace TSReports.Views
 
                 } while (resp.data.Count == this.limit);
 
-                
                 this._fromReport_labelStatus.BeginInvoke((MethodInvoker)delegate () {
-                    if(columns != null) {
+                    if (columns != null) {
                         this._fromReport_comboBoxColumnSearch.Items.AddRange(columns.ToArray());
-                    } 
-                    this._fromReport_labelStatus.Text = "Done.";
+                    }
+                    this._fromReport_labelStatus.Text = "Done";
+                    this._fromReport_labelStatus.ForeColor = Color.Blue;
                     this._fromReport_labelCantidad.Text = cont++.ToString();
                 });
-                
             } catch (CustomException cex) {
                 throw cex;
             } catch (Exception ex) {
@@ -112,6 +119,18 @@ namespace TSReports.Views
                 throw cex;
             } catch (Exception ex) {
                 throw new CustomException(ex);
+            }
+        }
+
+        private void _formReport_ButtonReportExcel_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.DefaultExt = "xlsx";
+            sfd.AddExtension = true;
+            if (sfd.ShowDialog() == DialogResult.OK) {
+                XLWorkbook wb = new XLWorkbook();
+                wb.Worksheets.Add(this.source.DefaultView.ToTable(), "TSReport");
+                wb.SaveAs(sfd.FileName);
             }
         }
     }

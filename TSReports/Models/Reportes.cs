@@ -26,7 +26,7 @@ namespace TSReports.Models
 
         public Reportes UpdateAll()
         {
-            this.reportes = (List<Reporte>)((IRest)ReporteService.Instance).List<Reporte>();
+            this.reportes = (List<Reporte>)ReporteService.Instance.List<Reporte>();
             return this;
         }
         public Reporte Update(int id)
@@ -47,6 +47,20 @@ namespace TSReports.Models
                 } 
             }
             return null;
+        }
+
+        public bool Delete(int id)
+        {
+            foreach (Reporte r in this.reportes) {
+                if (r.id == id) {
+                    if (ReporteService.Instance.Delete(id)) {
+                        this.reportes.Remove(r);
+                        return true;
+                    }
+                    break;
+                }
+            }
+            return false;
         }
     }
 }

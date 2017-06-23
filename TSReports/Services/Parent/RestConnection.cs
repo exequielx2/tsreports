@@ -30,6 +30,14 @@ namespace TSReports.Services
             request.RequestFormat = DataFormat.Json;
             return cliente.Execute(request);
         }
+        protected IRestResponse DoDelete(String url, object bodyjson)
+        {
+            var request = new RestRequest(url, Method.DELETE);
+            request.AddHeader("Accept", "application/json");
+            request.RequestFormat = DataFormat.Json;
+            request.AddBody(bodyjson);
+            return cliente.Execute(request);
+        }
 
     }
 }

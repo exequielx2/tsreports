@@ -17,27 +17,14 @@ namespace TSReports.Services
                 return instance;
             }
         }
-
-        IList<Reporte> IRest.List<Reporte>()
+        
+        public IList<Reporte> List<Reporte>()
         {
             JObject resp = JObject.Parse(this.DoGet(basepath + "/getentornos").Content);
             JArray data = (JArray)resp["data"];
             return data.ToObject<List<Reporte>>();
         }
-        object IRest.Get()
-        {
-            throw new NotImplementedException();
-        }
 
-        int IRest.Save()
-        {
-            throw new NotImplementedException();
-        }
-
-        int IRest.Update()
-        {
-            throw new NotImplementedException();
-        }
 
         public JObject Ejecutar(int id, int limit, int offset, List<dynamic> parametros)
         {
@@ -45,6 +32,29 @@ namespace TSReports.Services
             return JObject.Parse(this.DoPost(url, parametros).Content);
         }
 
-        
+        public bool Delete(int id)
+        {
+            string url = this.basepath + "/" + id;
+            dynamic resp = JObject.Parse(this.DoDelete(url, null).Content);
+            if(resp.code == 1) {
+                return true;
+            }
+            return false;
+        }
+
+        public object Get()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Save()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

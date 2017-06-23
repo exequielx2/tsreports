@@ -36,6 +36,7 @@
             this._fromReport_panel3 = new System.Windows.Forms.Panel();
             this._fromReport_labelStatus = new System.Windows.Forms.Label();
             this._fromReport_labelCantidad = new System.Windows.Forms.Label();
+            this._formReport_ButtonReportExcel = new System.Windows.Forms.Button();
             this._fromReport_panel1.SuspendLayout();
             this._fromReport_panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._fromReport_dataGridView)).BeginInit();
@@ -44,6 +45,7 @@
             // 
             // _fromReport_panel1
             // 
+            this._fromReport_panel1.Controls.Add(this._formReport_ButtonReportExcel);
             this._fromReport_panel1.Controls.Add(this._fromReport_comboBoxColumnSearch);
             this._fromReport_panel1.Controls.Add(this._fromReport_textBoxColumnSearch);
             this._fromReport_panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -129,6 +131,19 @@
             this._fromReport_labelCantidad.Text = "0";
             this._fromReport_labelCantidad.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // _formReport_ButtonReportExcel
+            // 
+            this._formReport_ButtonReportExcel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this._formReport_ButtonReportExcel.BackgroundImage = global::TSReports.Properties.Resources.excel;
+            this._formReport_ButtonReportExcel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._formReport_ButtonReportExcel.Location = new System.Drawing.Point(636, 5);
+            this._formReport_ButtonReportExcel.Name = "_formReport_ButtonReportExcel";
+            this._formReport_ButtonReportExcel.Size = new System.Drawing.Size(28, 23);
+            this._formReport_ButtonReportExcel.TabIndex = 4;
+            this._formReport_ButtonReportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this._formReport_ButtonReportExcel.UseVisualStyleBackColor = true;
+            this._formReport_ButtonReportExcel.Click += new System.EventHandler(this._formReport_ButtonReportExcel_Click);
+            // 
             // FormReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,5 +178,6 @@
         private System.Windows.Forms.Label _fromReport_labelStatus;
         private System.Windows.Forms.TextBox _fromReport_textBoxColumnSearch;
         private System.Windows.Forms.ComboBox _fromReport_comboBoxColumnSearch;
+        private System.Windows.Forms.Button _formReport_ButtonReportExcel;
     }
 }
