@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             this._formPrincipal_textBox_search = new System.Windows.Forms.TextBox();
             this._formPrincipal_panel1 = new System.Windows.Forms.Panel();
             this._formPrincipal_button_delete = new System.Windows.Forms.Button();
@@ -137,8 +138,8 @@
             this.ClientSize = new System.Drawing.Size(700, 435);
             this.Controls.Add(this._formPrincipal_panel2);
             this.Controls.Add(this._formPrincipal_panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPrincipal";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TSReports";
             this.Load += new System.EventHandler(this.FormPrincipal_Load);

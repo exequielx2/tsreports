@@ -8,6 +8,7 @@ namespace TSReports.Utils.Exceptions
         public CustomException(Exception e)
             : base() {
             MessageBox.Show(e.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+             
         }
     }
 }

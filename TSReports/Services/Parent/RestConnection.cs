@@ -10,7 +10,7 @@ namespace TSReports.Services
         public RestConnection()
         {
             if(null == cliente) {
-                cliente = new RestClient("http://192.168.0.58/ar/");
+                cliente = new RestClient(Properties.Settings.Default.server_url);
                 cliente.CookieContainer = new System.Net.CookieContainer();
             } 
         }

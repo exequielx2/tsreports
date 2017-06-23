@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace TSReports.Views
             this.source = new DataTable();
             InitializeComponent();
         }
-        private int limit = 500;
+        private int limit = Properties.Settings.Default.max_pages_for_request;
         private int offset = 0;
         private Thread hilo;
 
@@ -70,10 +71,18 @@ namespace TSReports.Views
                         this.BeginInvoke((MethodInvoker)delegate () {
                             this.Close();
                         });
+                        return;
+                    } else {
+                        if(cont == 0 && resp.data[0].count != null) {
+                            this._formReport_progressBarStatus.BeginInvoke((MethodInvoker)delegate () {
+                                _formReport_progressBarStatus.Maximum = resp.data[0].count;
+                            });
+                        }
                     }
                     foreach (JObject item in resp.data) {
                         if (columns == null) {
                             columns = item.Properties().Select(p => p.Name).ToList();
+                            columns.Remove("count");
                             foreach (string col in columns) {
                                 this.source.Columns.Add(col.ToUpper());
                             }
@@ -85,18 +94,22 @@ namespace TSReports.Views
                         this.source.Rows.Add(fila.ToArray());
                         cont++;
                     }
-                    this._fromReport_dataGridView.BeginInvoke((MethodInvoker)delegate () {
-                        this._fromReport_dataGridView.DataSource = this.source;
+                    this._formReport_dataGridView1.BeginInvoke((MethodInvoker)delegate () {
+                        this._formReport_dataGridView1.DataSource = this.source;
                         this._fromReport_labelCantidad.Text = cont.ToString();
+                        if (resp.data[0].count != null) {
+                            this._formReport_progressBarStatus.Value = cont;
+                        }
                     });
                     this.offset = this.offset + this.limit;
 
                 } while (resp.data.Count == this.limit);
 
-                this._fromReport_labelStatus.BeginInvoke((MethodInvoker)delegate () {
+                this._formReport_dataGridView1.BeginInvoke((MethodInvoker)delegate () {
                     if (columns != null) {
                         this._fromReport_comboBoxColumnSearch.Items.AddRange(columns.ToArray());
                     }
+                    this._formReport_progressBarStatus.Value = this._formReport_progressBarStatus.Maximum;
                     this._fromReport_labelStatus.Text = "Done";
                     this._fromReport_labelStatus.ForeColor = Color.Blue;
                     this._fromReport_labelCantidad.Text = cont++.ToString();
@@ -104,7 +117,7 @@ namespace TSReports.Views
             } catch (CustomException cex) {
                 throw cex;
             } catch (Exception ex) {
-                throw new CustomException(ex);
+                MessageBox.Show(ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
 
@@ -125,6 +138,7 @@ namespace TSReports.Views
         private void _formReport_ButtonReportExcel_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
+            sfd.FileName = this.reporte.descripcion.Replace(" ","_") + "-" + DateTime.Now.ToString(@"dd_MM_yyyy_hh_mm_tt");
             sfd.DefaultExt = "xlsx";
             sfd.AddExtension = true;
             if (sfd.ShowDialog() == DialogResult.OK) {
@@ -132,6 +146,11 @@ namespace TSReports.Views
                 wb.Worksheets.Add(this.source.DefaultView.ToTable(), "TSReport");
                 wb.SaveAs(sfd.FileName);
             }
+        }
+
+        private void FormReport_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.hilo.Abort();
         }
     }
 }

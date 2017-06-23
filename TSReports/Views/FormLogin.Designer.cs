@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this._formLogin_groupBox1 = new System.Windows.Forms.GroupBox();
             this._formLogin_label_password = new System.Windows.Forms.Label();
             this._formLogin_label_username = new System.Windows.Forms.Label();
@@ -109,10 +110,10 @@
             this.Controls.Add(this._formLogin_groupBox1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormLogin";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TRReports";
             this.TopMost = true;
