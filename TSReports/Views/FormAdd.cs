@@ -24,6 +24,15 @@ namespace TSReports.Views
             InitializeComponent();
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.F)) {
+                _formAdd_textBoxFilter.Focus();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         private void _formAdd_buttonUpColumn_Click(object sender, EventArgs e)
         {
             int selectedIndex = _formAdd_listBoxColumns.SelectedIndex;
@@ -45,45 +54,119 @@ namespace TSReports.Views
             }
         }
 
+        private void _formAdd_buttonUpTable_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = _formAdd_listBoxTables.SelectedIndex;
+            if (selectedIndex > 0) {
+                _formAdd_listBoxTables.Items.Insert(selectedIndex - 1, _formAdd_listBoxTables.Items[selectedIndex]);
+                _formAdd_listBoxTables.Items.RemoveAt(selectedIndex + 1);
+                _formAdd_listBoxTables.SelectedIndex = selectedIndex - 1;
+            }
+        }
+
+        private void _formAdd_buttonDownTable_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = _formAdd_listBoxTables.SelectedIndex;
+            if (selectedIndex < _formAdd_listBoxTables.Items.Count - 1 & selectedIndex != -1) {
+                _formAdd_listBoxTables.Items.Insert(selectedIndex + 2, _formAdd_listBoxTables.Items[selectedIndex]);
+                _formAdd_listBoxTables.Items.RemoveAt(selectedIndex);
+                _formAdd_listBoxTables.SelectedIndex = selectedIndex + 1;
+
+            }
+        }
+
         private void _formAdd_buttonDelete_Click(object sender, EventArgs e)
         {
             if (_formAdd_listBoxColumns.SelectedIndex != -1) {
-                foreach(DataGridViewRow row in this._formAdd_dataGridViewFilters.Rows) {
-                    if(((Campo)row.Tag).id == ((Campo)_formAdd_listBoxColumns.SelectedItem).id) {
+                //remove filtros
+                foreach (DataGridViewRow row in this._formAdd_dataGridViewFilters.Rows) {
+                    if (((Campo)row.Tag).id == ((Campo)_formAdd_listBoxColumns.SelectedItem).id) {
                         this._formAdd_dataGridViewFilters.Rows.RemoveAt(row.Index);
                     }
                 }
+
+                //remove tables
+                for (int i = 0; i < _formAdd_listBoxTables.Items.Count; i++) {
+                    Tabla _t = (Tabla)_formAdd_listBoxTables.Items[i];
+                    if (_t == ((Campo)_formAdd_listBoxColumns.SelectedItem).tabla) {
+                        _formAdd_listBoxTables.Items.Remove(_t);
+                        i--;
+                    }
+                }
+                //remove columns
                 _formAdd_listBoxColumns.Items.RemoveAt(_formAdd_listBoxColumns.SelectedIndex);
-                RestartNodes();
+
+                //reset
+                //RestartNodes();
             }
         }
 
         private void _formAdd_treeViewReportes_DoubleClick(object sender, EventArgs e)
         {
             TreeNode selected = ((TreeView)sender).SelectedNode;
-            if (selected != null && selected.Level > 0) {
+            this.AddItemToCampos(selected);
+        }
 
-                List<int> idsdestino = new List<int>();
-                idsdestino.Add(Int32.Parse(selected.Name));
-                List<int> idsorigen = new List<int>();
-                foreach (Campo c in this._formAdd_listBoxColumns.Items) {
-                    idsorigen.Add(c.id);
-                }
-                dynamic resp = Tablas.Instance.Relaciones(idsorigen, idsdestino);
-                if(resp != null) { 
-                  /*  using (var form = new FormChoseTable(resp)) {
-                        var result = form.ShowDialog();
-                        if (result == DialogResult.OK) {
-                            int idtabla = form.idtablaelegida;
+        private void AddItemToCampos(TreeNode selected)
+        {
+            if (selected == null || selected.Level == 0) { return; }
+            int idcampo = Int32.Parse(selected.Name);
+            int idtabla = Int32.Parse(selected.Parent.Name);
+            Tabla tabla = null;
+            bool found = false;
+            foreach (Tabla _t in _formAdd_listBoxTables.Items) {
+                if (_t.id == idtabla) {
+                    tabla = _t;
+                    foreach (Campo _c in _formAdd_listBoxColumns.Items) {
+                        if (_c.id == idcampo) {
+                            found = true;
+                            break;
                         }
-                    }*/
+                    }
+                    if (found) { break; }
                 }
-
-                int idcampo = Int32.Parse(selected.Name);
-                Campo campo = Tablas.Instance.GetCampo(idcampo);
-                _formAdd_listBoxColumns.Items.Add(campo);
-                selected.Parent.Nodes.RemoveAt(selected.Index);
             }
+            if (tabla == null) {
+                tabla = Utils.Utils.DeepCopy<Tabla>(Tablas.Instance.Get(idtabla));
+                tabla.alias = Utils.Utils.TableAlias();
+                tabla.campos.Clear();
+            }
+            if (found) {
+                DialogResult dialogResult = MessageBox.Show("El campo ya existe en la proyección\n ¿desea replicar la tabla?", "Replicar Tabla", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes) {
+                    tabla = Utils.Utils.DeepCopy<Tabla>(Tablas.Instance.Get(idtabla));
+                    tabla.alias = Utils.Utils.TableAlias();
+                    tabla.campos.Clear();
+                    _formAdd_listBoxTables.Items.Add(tabla);
+                } else {
+                    return;
+                }
+            } else {
+                if (!_formAdd_listBoxTables.Items.Contains(tabla)) {
+                    _formAdd_listBoxTables.Items.Add(tabla);
+                }
+            }
+
+             List<int> idsdestino = new List<int>();
+             idsdestino.Add(Int32.Parse(selected.Name));
+             List<int> idsorigen = new List<int>();
+             foreach (Campo c in this._formAdd_listBoxColumns.Items) {
+                 idsorigen.Add(c.id);
+             }
+             dynamic resp = Tablas.Instance.Relaciones(idsorigen, idsdestino);
+             if(resp != null) {
+                FormChooseTable formct = new FormChooseTable(resp);
+                if (formct.ShowDialog() == DialogResult.OK) {
+
+                }
+             }
+
+            Campo campo = Utils.Utils.DeepCopy<Campo>(Tablas.Instance.GetCampo(idcampo));
+            campo.alias = campo.titulo.ToUpper();
+            campo.tabla = tabla;
+            tabla.campos.Add(campo);
+            _formAdd_listBoxColumns.Items.Add(campo);
+            ///selected.Parent.Nodes.RemoveAt(selected.Index); remueve del tree
         }
 
         private void FormAdd_Load(object sender, EventArgs e)
@@ -91,6 +174,8 @@ namespace TSReports.Views
             _fieldsTreeCache = new TreeView();
             _formAdd_listBoxColumns.DisplayMember = "titulo";
             _formAdd_listBoxColumns.ValueMember = "id";
+            _formAdd_listBoxTables.DisplayMember = "titulo";
+            _formAdd_listBoxTables.ValueMember = "id";
 
             _formAdd_dataGridViewFilters.ColumnCount = 5;
             _formAdd_dataGridViewFilters.Columns[0].Name = "Campo";
@@ -195,7 +280,7 @@ namespace TSReports.Views
         private void _formAdd_listBoxColumns_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this._formAdd_listBoxColumns.SelectedIndex != -1) {
-                this._formAdd_panelPropColumns.Visible = true;
+                this._formAdd_panelPropColumns.Enabled = true;
                 Campo camposelected = (Campo)this._formAdd_listBoxColumns.SelectedItem;
                 if (camposelected.orderby == Campo.orderbyenum.ASC) {
                     this._formAdd_radioButtonAsc.Checked = true;
@@ -203,8 +288,9 @@ namespace TSReports.Views
                     this._formAdd_radioButtonDesc.Checked = true;
                 }
                 this._formAdd_checkBoxVisible.Checked = camposelected.visible;
+                this._formAdd_textBoxAliasColumn.Text = camposelected.alias;
             } else {
-                this._formAdd_panelPropColumns.Visible = false;
+                this._formAdd_panelPropColumns.Enabled = false;
             }
         }
 
@@ -223,6 +309,20 @@ namespace TSReports.Views
         {
             if (this._formAdd_listBoxColumns.SelectedIndex != -1) {
                 ((Campo)this._formAdd_listBoxColumns.SelectedItem).visible = this._formAdd_checkBoxVisible.Checked;
+            }
+        }
+
+        private void _formAdd_textBoxAliasColumn_TextChanged(object sender, EventArgs e)
+        {
+            if (this._formAdd_listBoxColumns.SelectedIndex != -1) {
+                ((Campo)this._formAdd_listBoxColumns.SelectedItem).alias = this._formAdd_textBoxAliasColumn.Text;
+            }
+        }
+
+        private void _formAdd_textBoxAliasTable_TextChanged(object sender, EventArgs e)
+        {
+            if (this._formAdd_listBoxTables.SelectedIndex != -1) {
+                ((Tabla)this._formAdd_listBoxTables.SelectedItem).alias = this._formAdd_textBoxAliasTable.Text;
             }
         }
 
@@ -255,6 +355,8 @@ namespace TSReports.Views
 
                 _formAdd_dataGridViewFilters.Rows.Add(row);
 
+                tabControl1.SelectedIndex = 1;
+
             }
         }
 
@@ -267,6 +369,47 @@ namespace TSReports.Views
                     this._formAdd_dataGridViewFilters.Rows.RemoveAt(e.RowIndex);
                 }
             }
+        }
+
+        private void _formAdd_listBoxTables_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this._formAdd_listBoxTables.SelectedIndex != -1) {
+                this._formAdd_panelPropTable.Enabled = true;
+                Tabla tablaselected = (Tabla)this._formAdd_listBoxTables.SelectedItem;
+
+                this._formAdd_textBoxAliasTable.Text = tablaselected.alias;
+            } else {
+                this._formAdd_panelPropTable.Enabled = false;
+            }
+        }
+
+        private void _formAdd_treeViewReportes_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            TreeNode selected = ((TreeView)sender).SelectedNode;
+            DoDragDrop(selected, DragDropEffects.Move);
+        }
+
+        private void _formAdd_treeViewReportes_listBoxColumns_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(TreeNode))) {
+                e.Effect = DragDropEffects.Move;
+            } else {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void _formAdd_listBoxColumns_DragDrop(object sender, DragEventArgs e)
+        {
+            dynamic selected = e.Data.GetData(typeof(TreeNode));
+            if (selected != null && selected.GetType() == typeof(TreeNode)) {
+                this.AddItemToCampos((TreeNode)selected);
+            }
+                
+        }
+
+        private void _formAdd_treeViewReportes_MouseDown(object sender, MouseEventArgs e)
+        {
+            _formAdd_treeViewReportes.SelectedNode = _formAdd_treeViewReportes.GetNodeAt(e.X, e.Y);
         }
     }
 }

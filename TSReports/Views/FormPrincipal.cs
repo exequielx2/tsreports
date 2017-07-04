@@ -54,6 +54,7 @@ namespace TSReports.Views
                     _fieldsTreeCache.Nodes[grupo].Nodes.Add(Convert.ToString(reporte.id), Convert.ToString(reporte.descripcion));
                 }
                 _formPrincipal_treeView_reportes.EndUpdate();
+                _formPrincipal_treeView_reportes.ExpandAll();
             } catch (CustomException cex) {
                 throw cex;
             } catch (Exception ex) {

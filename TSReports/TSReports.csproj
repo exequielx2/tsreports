@@ -75,6 +75,7 @@
     <Compile Include="Services\ReporteService.cs" />
     <Compile Include="Services\Parent\RestConnection.cs" />
     <Compile Include="Utils\Exceptions\CustomException.cs" />
+    <Compile Include="Utils\Utils.cs" />
     <Compile Include="Views\FormAdd.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace TSReports.Models.Entities
 {
+    [Serializable]
     class Filtro
     {
         public int id { get; set; }
