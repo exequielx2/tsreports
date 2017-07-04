@@ -27,6 +27,7 @@ namespace TSReports.Views
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == (Keys.Control | Keys.F)) {
+                _formAdd_textBoxFilter.SelectAll();
                 _formAdd_textBoxFilter.Focus();
                 return true;
             }
@@ -147,19 +148,19 @@ namespace TSReports.Views
                 }
             }
 
-             List<int> idsdestino = new List<int>();
-             idsdestino.Add(Int32.Parse(selected.Name));
-             List<int> idsorigen = new List<int>();
-             foreach (Campo c in this._formAdd_listBoxColumns.Items) {
-                 idsorigen.Add(c.id);
-             }
-             dynamic resp = Tablas.Instance.Relaciones(idsorigen, idsdestino);
-             if(resp != null) {
-                FormChooseTable formct = new FormChooseTable(resp);
-                if (formct.ShowDialog() == DialogResult.OK) {
+            List<int> idsdestino = new List<int>();
+            idsdestino.Add(Int32.Parse(selected.Name));
+            List<int> idsorigen = new List<int>();
+            foreach (Campo c in this._formAdd_listBoxColumns.Items) {
+                idsorigen.Add(c.id);
+            }
+            /*   dynamic resp = Tablas.Instance.Relaciones(idsorigen, idsdestino);
+               if(resp != null) {
+                  FormChooseTable formct = new FormChooseTable(resp);
+                  if (formct.ShowDialog() == DialogResult.OK) {
 
-                }
-             }
+                  }
+               }*/
 
             Campo campo = Utils.Utils.DeepCopy<Campo>(Tablas.Instance.GetCampo(idcampo));
             campo.alias = campo.titulo.ToUpper();
@@ -229,6 +230,9 @@ namespace TSReports.Views
                     if (_parentNode.IsExpanded) {
                         clonednode.Expand();
                     }
+                    if (_parentNode.Text.ToUpper().Equals(this._formAdd_textBoxFilter.Text.ToUpper())) {
+                        clonednode.Expand();
+                    }
                     int index = this._formAdd_treeViewReportes.Nodes.Add(clonednode);
                     RemoveChildNodes(index);
                 }
@@ -279,6 +283,7 @@ namespace TSReports.Views
 
         private void _formAdd_listBoxColumns_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //propiedades de los campos
             if (this._formAdd_listBoxColumns.SelectedIndex != -1) {
                 this._formAdd_panelPropColumns.Enabled = true;
                 Campo camposelected = (Campo)this._formAdd_listBoxColumns.SelectedItem;
@@ -289,9 +294,20 @@ namespace TSReports.Views
                 }
                 this._formAdd_checkBoxVisible.Checked = camposelected.visible;
                 this._formAdd_textBoxAliasColumn.Text = camposelected.alias;
+
+                //autoseleccionar fila de tabla cuando se selecciona el campo
+                foreach (Tabla _t in this._formAdd_listBoxTables.Items) {
+                    if (_t.campos.Contains(camposelected)) {
+                        _formAdd_listBoxTables.SelectedItem = _t;
+                        break;
+                    }
+                }
+
+
             } else {
                 this._formAdd_panelPropColumns.Enabled = false;
             }
+
         }
 
         private void _formAdd_radioButtonDesc_CheckedChanged(object sender, EventArgs e)
@@ -404,7 +420,7 @@ namespace TSReports.Views
             if (selected != null && selected.GetType() == typeof(TreeNode)) {
                 this.AddItemToCampos((TreeNode)selected);
             }
-                
+
         }
 
         private void _formAdd_treeViewReportes_MouseDown(object sender, MouseEventArgs e)

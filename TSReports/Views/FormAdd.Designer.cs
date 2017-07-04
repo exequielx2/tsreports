@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Cargando tablas...");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Cargando tablas...");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdd));
             this._formAdd_treeViewReportes = new System.Windows.Forms.TreeView();
             this._formAdd_listBoxColumns = new System.Windows.Forms.ListBox();
@@ -83,10 +83,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this._formAdd_treeViewReportes.Location = new System.Drawing.Point(6, 48);
             this._formAdd_treeViewReportes.Name = "_formAdd_treeViewReportes";
-            treeNode1.Name = "Nodo0";
-            treeNode1.Text = "Cargando tablas...";
+            treeNode2.Name = "Nodo0";
+            treeNode2.Text = "Cargando tablas...";
             this._formAdd_treeViewReportes.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this._formAdd_treeViewReportes.Size = new System.Drawing.Size(188, 317);
             this._formAdd_treeViewReportes.TabIndex = 0;
             this._formAdd_treeViewReportes.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this._formAdd_treeViewReportes_AfterCollapse);
@@ -322,6 +322,7 @@
             // 
             // _formAdd_textBoxAliasTable
             // 
+            this._formAdd_textBoxAliasTable.Enabled = false;
             this._formAdd_textBoxAliasTable.Location = new System.Drawing.Point(38, 7);
             this._formAdd_textBoxAliasTable.Name = "_formAdd_textBoxAliasTable";
             this._formAdd_textBoxAliasTable.Size = new System.Drawing.Size(133, 20);
