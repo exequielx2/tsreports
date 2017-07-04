@@ -33,47 +33,47 @@
             this._formAdd_treeViewReportes = new System.Windows.Forms.TreeView();
             this._formAdd_listBoxColumns = new System.Windows.Forms.ListBox();
             this._formAdd_panelPropColumns = new System.Windows.Forms.Panel();
+            this._formAdd_checkBoxVisible = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this._formAdd_radioButtonDesc = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this._formAdd_radioButtonAsc = new System.Windows.Forms.RadioButton();
             this._formAdd_textBoxFilter = new System.Windows.Forms.TextBox();
             this._formAdd_panelTop = new System.Windows.Forms.Panel();
             this._formAdd_comboBoxGrupo = new System.Windows.Forms.ComboBox();
+            this._formAdd_ButtonSave = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this._formAdd_textBoxNombre = new System.Windows.Forms.TextBox();
-            this._formAdd_ButtonSave = new System.Windows.Forms.Button();
             this._formAdd_dataGridViewFilters = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this._formAdd_buttonDelete = new System.Windows.Forms.Button();
-            this._formAdd_buttonDownColumn = new System.Windows.Forms.Button();
-            this._formAdd_buttonUpColumn = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this._formAdd_checkBoxVisible = new System.Windows.Forms.CheckBox();
-            this._formAdd_radioButtonDesc = new System.Windows.Forms.RadioButton();
-            this._formAdd_radioButtonAsc = new System.Windows.Forms.RadioButton();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this._formAdd_buttonDelete = new System.Windows.Forms.Button();
+            this._formAdd_buttonDownColumn = new System.Windows.Forms.Button();
+            this._formAdd_buttonUpColumn = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this._formAdd_panelPropColumns.SuspendLayout();
             this._formAdd_panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._formAdd_dataGridViewFilters)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // _formAdd_treeViewReportes
@@ -120,6 +120,60 @@
             this._formAdd_panelPropColumns.TabIndex = 6;
             this._formAdd_panelPropColumns.Visible = false;
             // 
+            // _formAdd_checkBoxVisible
+            // 
+            this._formAdd_checkBoxVisible.AutoSize = true;
+            this._formAdd_checkBoxVisible.Checked = true;
+            this._formAdd_checkBoxVisible.CheckState = System.Windows.Forms.CheckState.Checked;
+            this._formAdd_checkBoxVisible.ForeColor = System.Drawing.Color.Black;
+            this._formAdd_checkBoxVisible.Location = new System.Drawing.Point(7, 57);
+            this._formAdd_checkBoxVisible.Name = "_formAdd_checkBoxVisible";
+            this._formAdd_checkBoxVisible.Size = new System.Drawing.Size(56, 17);
+            this._formAdd_checkBoxVisible.TabIndex = 7;
+            this._formAdd_checkBoxVisible.Text = "Visible";
+            this._formAdd_checkBoxVisible.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(42, 7);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(133, 20);
+            this.textBox1.TabIndex = 4;
+            // 
+            // _formAdd_radioButtonDesc
+            // 
+            this._formAdd_radioButtonDesc.AutoSize = true;
+            this._formAdd_radioButtonDesc.ForeColor = System.Drawing.Color.Black;
+            this._formAdd_radioButtonDesc.Location = new System.Drawing.Point(86, 33);
+            this._formAdd_radioButtonDesc.Name = "_formAdd_radioButtonDesc";
+            this._formAdd_radioButtonDesc.Size = new System.Drawing.Size(89, 17);
+            this._formAdd_radioButtonDesc.TabIndex = 6;
+            this._formAdd_radioButtonDesc.Text = "Descendente";
+            this._formAdd_radioButtonDesc.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(4, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Alias:";
+            // 
+            // _formAdd_radioButtonAsc
+            // 
+            this._formAdd_radioButtonAsc.AutoSize = true;
+            this._formAdd_radioButtonAsc.Checked = true;
+            this._formAdd_radioButtonAsc.ForeColor = System.Drawing.Color.Black;
+            this._formAdd_radioButtonAsc.Location = new System.Drawing.Point(7, 33);
+            this._formAdd_radioButtonAsc.Name = "_formAdd_radioButtonAsc";
+            this._formAdd_radioButtonAsc.Size = new System.Drawing.Size(82, 17);
+            this._formAdd_radioButtonAsc.TabIndex = 5;
+            this._formAdd_radioButtonAsc.TabStop = true;
+            this._formAdd_radioButtonAsc.Text = "Ascendente";
+            this._formAdd_radioButtonAsc.UseVisualStyleBackColor = true;
+            // 
             // _formAdd_textBoxFilter
             // 
             this._formAdd_textBoxFilter.Location = new System.Drawing.Point(5, 19);
@@ -150,6 +204,17 @@
             this._formAdd_comboBoxGrupo.Size = new System.Drawing.Size(148, 21);
             this._formAdd_comboBoxGrupo.TabIndex = 3;
             // 
+            // _formAdd_ButtonSave
+            // 
+            this._formAdd_ButtonSave.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this._formAdd_ButtonSave.ForeColor = System.Drawing.Color.Black;
+            this._formAdd_ButtonSave.Location = new System.Drawing.Point(440, 2);
+            this._formAdd_ButtonSave.Name = "_formAdd_ButtonSave";
+            this._formAdd_ButtonSave.Size = new System.Drawing.Size(75, 23);
+            this._formAdd_ButtonSave.TabIndex = 10;
+            this._formAdd_ButtonSave.Text = "Guardar";
+            this._formAdd_ButtonSave.UseVisualStyleBackColor = true;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -176,17 +241,6 @@
             this._formAdd_textBoxNombre.Name = "_formAdd_textBoxNombre";
             this._formAdd_textBoxNombre.Size = new System.Drawing.Size(144, 20);
             this._formAdd_textBoxNombre.TabIndex = 0;
-            // 
-            // _formAdd_ButtonSave
-            // 
-            this._formAdd_ButtonSave.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this._formAdd_ButtonSave.ForeColor = System.Drawing.Color.Black;
-            this._formAdd_ButtonSave.Location = new System.Drawing.Point(440, 2);
-            this._formAdd_ButtonSave.Name = "_formAdd_ButtonSave";
-            this._formAdd_ButtonSave.Size = new System.Drawing.Size(75, 23);
-            this._formAdd_ButtonSave.TabIndex = 10;
-            this._formAdd_ButtonSave.Text = "Guardar";
-            this._formAdd_ButtonSave.UseVisualStyleBackColor = true;
             // 
             // _formAdd_dataGridViewFilters
             // 
@@ -231,112 +285,6 @@
             this.tabPage1.Text = "Campos";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this._formAdd_dataGridViewFilters);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(671, 398);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Filtros";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.richTextBox1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(671, 398);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "SQL";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(7, 7);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(563, 354);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox1.Controls.Add(this._formAdd_treeViewReportes);
-            this.groupBox1.Controls.Add(this._formAdd_textBoxFilter);
-            this.groupBox1.Location = new System.Drawing.Point(4, 7);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 379);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Origen";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox2.Controls.Add(this._formAdd_buttonDelete);
-            this.groupBox2.Controls.Add(this._formAdd_listBoxColumns);
-            this.groupBox2.Controls.Add(this._formAdd_buttonDownColumn);
-            this.groupBox2.Controls.Add(this._formAdd_panelPropColumns);
-            this.groupBox2.Controls.Add(this._formAdd_buttonUpColumn);
-            this.groupBox2.Location = new System.Drawing.Point(214, 7);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(219, 379);
-            this.groupBox2.TabIndex = 10;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Columnas";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(4, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Alias:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(42, 7);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(133, 20);
-            this.textBox1.TabIndex = 4;
-            // 
-            // _formAdd_buttonDelete
-            // 
-            this._formAdd_buttonDelete.BackgroundImage = global::TSReports.Properties.Resources.delete1;
-            this._formAdd_buttonDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this._formAdd_buttonDelete.Location = new System.Drawing.Point(193, 96);
-            this._formAdd_buttonDelete.Name = "_formAdd_buttonDelete";
-            this._formAdd_buttonDelete.Size = new System.Drawing.Size(23, 23);
-            this._formAdd_buttonDelete.TabIndex = 15;
-            this._formAdd_buttonDelete.UseVisualStyleBackColor = true;
-            // 
-            // _formAdd_buttonDownColumn
-            // 
-            this._formAdd_buttonDownColumn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_formAdd_buttonDownColumn.BackgroundImage")));
-            this._formAdd_buttonDownColumn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this._formAdd_buttonDownColumn.Location = new System.Drawing.Point(193, 48);
-            this._formAdd_buttonDownColumn.Name = "_formAdd_buttonDownColumn";
-            this._formAdd_buttonDownColumn.Size = new System.Drawing.Size(23, 23);
-            this._formAdd_buttonDownColumn.TabIndex = 14;
-            this._formAdd_buttonDownColumn.UseVisualStyleBackColor = true;
-            // 
-            // _formAdd_buttonUpColumn
-            // 
-            this._formAdd_buttonUpColumn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_formAdd_buttonUpColumn.BackgroundImage")));
-            this._formAdd_buttonUpColumn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this._formAdd_buttonUpColumn.Location = new System.Drawing.Point(193, 19);
-            this._formAdd_buttonUpColumn.Name = "_formAdd_buttonUpColumn";
-            this._formAdd_buttonUpColumn.Size = new System.Drawing.Size(23, 23);
-            this._formAdd_buttonUpColumn.TabIndex = 13;
-            this._formAdd_buttonUpColumn.UseVisualStyleBackColor = true;
-            // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -352,6 +300,34 @@
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tablas";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Location = new System.Drawing.Point(8, 294);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(178, 79);
+            this.panel1.TabIndex = 18;
+            this.panel1.Visible = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(42, 7);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(133, 20);
+            this.textBox2.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(4, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Alias:";
             // 
             // listBox1
             // 
@@ -384,70 +360,97 @@
             this.button2.TabIndex = 16;
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // groupBox2
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(8, 294);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(178, 79);
-            this.panel1.TabIndex = 18;
-            this.panel1.Visible = false;
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this._formAdd_buttonDelete);
+            this.groupBox2.Controls.Add(this._formAdd_listBoxColumns);
+            this.groupBox2.Controls.Add(this._formAdd_buttonDownColumn);
+            this.groupBox2.Controls.Add(this._formAdd_panelPropColumns);
+            this.groupBox2.Controls.Add(this._formAdd_buttonUpColumn);
+            this.groupBox2.Location = new System.Drawing.Point(214, 7);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(219, 379);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Columnas";
             // 
-            // textBox2
+            // _formAdd_buttonDelete
             // 
-            this.textBox2.Location = new System.Drawing.Point(42, 7);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(133, 20);
-            this.textBox2.TabIndex = 4;
+            this._formAdd_buttonDelete.BackgroundImage = global::TSReports.Properties.Resources.delete1;
+            this._formAdd_buttonDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._formAdd_buttonDelete.Location = new System.Drawing.Point(193, 96);
+            this._formAdd_buttonDelete.Name = "_formAdd_buttonDelete";
+            this._formAdd_buttonDelete.Size = new System.Drawing.Size(23, 23);
+            this._formAdd_buttonDelete.TabIndex = 15;
+            this._formAdd_buttonDelete.UseVisualStyleBackColor = true;
+            this._formAdd_buttonDelete.Click += new System.EventHandler(this._formAdd_buttonDelete_Click);
             // 
-            // label4
+            // _formAdd_buttonDownColumn
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(4, 10);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Alias:";
+            this._formAdd_buttonDownColumn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_formAdd_buttonDownColumn.BackgroundImage")));
+            this._formAdd_buttonDownColumn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._formAdd_buttonDownColumn.Location = new System.Drawing.Point(193, 48);
+            this._formAdd_buttonDownColumn.Name = "_formAdd_buttonDownColumn";
+            this._formAdd_buttonDownColumn.Size = new System.Drawing.Size(23, 23);
+            this._formAdd_buttonDownColumn.TabIndex = 14;
+            this._formAdd_buttonDownColumn.UseVisualStyleBackColor = true;
+            this._formAdd_buttonDownColumn.Click += new System.EventHandler(this._formAdd_buttonDownColumn_Click);
             // 
-            // _formAdd_checkBoxVisible
+            // _formAdd_buttonUpColumn
             // 
-            this._formAdd_checkBoxVisible.AutoSize = true;
-            this._formAdd_checkBoxVisible.Checked = true;
-            this._formAdd_checkBoxVisible.CheckState = System.Windows.Forms.CheckState.Checked;
-            this._formAdd_checkBoxVisible.ForeColor = System.Drawing.Color.Black;
-            this._formAdd_checkBoxVisible.Location = new System.Drawing.Point(7, 57);
-            this._formAdd_checkBoxVisible.Name = "_formAdd_checkBoxVisible";
-            this._formAdd_checkBoxVisible.Size = new System.Drawing.Size(56, 17);
-            this._formAdd_checkBoxVisible.TabIndex = 7;
-            this._formAdd_checkBoxVisible.Text = "Visible";
-            this._formAdd_checkBoxVisible.UseVisualStyleBackColor = true;
+            this._formAdd_buttonUpColumn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_formAdd_buttonUpColumn.BackgroundImage")));
+            this._formAdd_buttonUpColumn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._formAdd_buttonUpColumn.Location = new System.Drawing.Point(193, 19);
+            this._formAdd_buttonUpColumn.Name = "_formAdd_buttonUpColumn";
+            this._formAdd_buttonUpColumn.Size = new System.Drawing.Size(23, 23);
+            this._formAdd_buttonUpColumn.TabIndex = 13;
+            this._formAdd_buttonUpColumn.UseVisualStyleBackColor = true;
+            this._formAdd_buttonUpColumn.Click += new System.EventHandler(this._formAdd_buttonUpColumn_Click);
             // 
-            // _formAdd_radioButtonDesc
+            // groupBox1
             // 
-            this._formAdd_radioButtonDesc.AutoSize = true;
-            this._formAdd_radioButtonDesc.ForeColor = System.Drawing.Color.Black;
-            this._formAdd_radioButtonDesc.Location = new System.Drawing.Point(86, 33);
-            this._formAdd_radioButtonDesc.Name = "_formAdd_radioButtonDesc";
-            this._formAdd_radioButtonDesc.Size = new System.Drawing.Size(89, 17);
-            this._formAdd_radioButtonDesc.TabIndex = 6;
-            this._formAdd_radioButtonDesc.Text = "Descendente";
-            this._formAdd_radioButtonDesc.UseVisualStyleBackColor = true;
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this._formAdd_treeViewReportes);
+            this.groupBox1.Controls.Add(this._formAdd_textBoxFilter);
+            this.groupBox1.Location = new System.Drawing.Point(4, 7);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 379);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Origen";
             // 
-            // _formAdd_radioButtonAsc
+            // tabPage2
             // 
-            this._formAdd_radioButtonAsc.AutoSize = true;
-            this._formAdd_radioButtonAsc.Checked = true;
-            this._formAdd_radioButtonAsc.ForeColor = System.Drawing.Color.Black;
-            this._formAdd_radioButtonAsc.Location = new System.Drawing.Point(7, 33);
-            this._formAdd_radioButtonAsc.Name = "_formAdd_radioButtonAsc";
-            this._formAdd_radioButtonAsc.Size = new System.Drawing.Size(82, 17);
-            this._formAdd_radioButtonAsc.TabIndex = 5;
-            this._formAdd_radioButtonAsc.TabStop = true;
-            this._formAdd_radioButtonAsc.Text = "Ascendente";
-            this._formAdd_radioButtonAsc.UseVisualStyleBackColor = true;
+            this.tabPage2.Controls.Add(this._formAdd_dataGridViewFilters);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(671, 398);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Filtros";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.richTextBox1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(671, 398);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "SQL";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(7, 7);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(563, 354);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
             // 
             // FormAdd
             // 
@@ -469,14 +472,14 @@
             ((System.ComponentModel.ISupportInitialize)(this._formAdd_dataGridViewFilters)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
