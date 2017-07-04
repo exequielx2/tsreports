@@ -32,6 +32,13 @@ namespace TSReports.Services
             return JObject.Parse(this.DoPost(url, parametros).Content);
         }
 
+        public IList<Tabla> ListTables<Tabla>()
+        {
+            JObject resp = JObject.Parse(this.DoGet(basepath + "/getcolumnas").Content);
+            JArray data = (JArray)resp["data"];
+            return data.ToObject<List<Tabla>>();
+        }
+
         public bool Delete(int id)
         {
             string url = this.basepath + "/" + id;
@@ -40,6 +47,12 @@ namespace TSReports.Services
                 return true;
             }
             return false;
+        }
+
+        public JObject Relaciones(dynamic parametros)
+        {
+            string url = this.basepath + "/getrelaciones";
+            return JObject.Parse(this.DoPost(url, parametros).Content);
         }
 
         public object Get()

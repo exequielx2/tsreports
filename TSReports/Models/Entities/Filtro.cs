@@ -5,13 +5,13 @@ namespace TSReports.Models.Entities
 {
     class Filtro
     {
-        public int id;
-        public string descripcion;
-        public string tipodato;
-        public bool visible;
-        public bool requerido;
-        public string valor;
-        public int orden;
+        public int id { get; set; }
+        public string descripcion { get; set; }
+        public string tipodato { get; set; }
+        public bool visible { get; set; }
+        public bool requerido { get; set; }
+        public string valor { get; set; }
+        public int orden { get; set; }
         public Control[] control;
 
         public Filtro parseControl()

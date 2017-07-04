@@ -6,11 +6,11 @@ namespace TSReports.Models.Entities
     {
         public enum TipoEntorno { dinamico,estatico };
 
-        public int id;
-        public bool exportable;
-        public string descripcion;
-        public Reporte.TipoEntorno tipo;
-        public string grupo;
-        public List<Campo> campos;
+        public int id { get; set; }
+        public bool exportable { get; set; }
+        public string descripcion { get; set; }
+        public Reporte.TipoEntorno tipo { get; set; }
+        public string grupo { get; set; }
+        public List<Campo> campos { get; set; }
     }
 }
