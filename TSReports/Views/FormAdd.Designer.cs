@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Cargando tablas...");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Cargando tablas...");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdd));
             this._formAdd_treeViewReportes = new System.Windows.Forms.TreeView();
             this._formAdd_listBoxColumns = new System.Windows.Forms.ListBox();
@@ -53,16 +53,17 @@
             this._formAdd_textBoxAliasTable = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this._formAdd_listBoxTables = new System.Windows.Forms.ListBox();
-            this._formAdd_buttonDownTable = new System.Windows.Forms.Button();
-            this._formAdd_buttonUpTable = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this._formAdd_buttonDelete = new System.Windows.Forms.Button();
-            this._formAdd_buttonDownColumn = new System.Windows.Forms.Button();
-            this._formAdd_buttonUpColumn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this._formAdd_buttonDownTable = new System.Windows.Forms.Button();
+            this._formAdd_buttonUpTable = new System.Windows.Forms.Button();
+            this._formAdd_buttonFilter = new System.Windows.Forms.Button();
+            this._formAdd_buttonDelete = new System.Windows.Forms.Button();
+            this._formAdd_buttonDownColumn = new System.Windows.Forms.Button();
+            this._formAdd_buttonUpColumn = new System.Windows.Forms.Button();
             this._formAdd_panelPropColumns.SuspendLayout();
             this._formAdd_panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._formAdd_dataGridViewFilters)).BeginInit();
@@ -83,10 +84,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this._formAdd_treeViewReportes.Location = new System.Drawing.Point(6, 48);
             this._formAdd_treeViewReportes.Name = "_formAdd_treeViewReportes";
-            treeNode2.Name = "Nodo0";
-            treeNode2.Text = "Cargando tablas...";
+            treeNode3.Name = "Nodo0";
+            treeNode3.Text = "Cargando tablas...";
             this._formAdd_treeViewReportes.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode3});
             this._formAdd_treeViewReportes.Size = new System.Drawing.Size(188, 317);
             this._formAdd_treeViewReportes.TabIndex = 0;
             this._formAdd_treeViewReportes.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this._formAdd_treeViewReportes_AfterCollapse);
@@ -223,6 +224,7 @@
             this._formAdd_ButtonSave.TabIndex = 10;
             this._formAdd_ButtonSave.Text = "Guardar";
             this._formAdd_ButtonSave.UseVisualStyleBackColor = true;
+            this._formAdd_ButtonSave.Click += new System.EventHandler(this._formAdd_ButtonSave_Click);
             // 
             // label2
             // 
@@ -256,16 +258,14 @@
             this._formAdd_dataGridViewFilters.AllowUserToAddRows = false;
             this._formAdd_dataGridViewFilters.AllowUserToDeleteRows = false;
             this._formAdd_dataGridViewFilters.AllowUserToOrderColumns = true;
-            this._formAdd_dataGridViewFilters.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this._formAdd_dataGridViewFilters.BackgroundColor = System.Drawing.SystemColors.Control;
             this._formAdd_dataGridViewFilters.CausesValidation = false;
             this._formAdd_dataGridViewFilters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._formAdd_dataGridViewFilters.Location = new System.Drawing.Point(6, 7);
+            this._formAdd_dataGridViewFilters.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._formAdd_dataGridViewFilters.Location = new System.Drawing.Point(3, 3);
             this._formAdd_dataGridViewFilters.MultiSelect = false;
             this._formAdd_dataGridViewFilters.Name = "_formAdd_dataGridViewFilters";
-            this._formAdd_dataGridViewFilters.Size = new System.Drawing.Size(659, 385);
+            this._formAdd_dataGridViewFilters.Size = new System.Drawing.Size(676, 388);
             this._formAdd_dataGridViewFilters.TabIndex = 11;
             this._formAdd_dataGridViewFilters.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this._formAdd_dataGridViewFilters_CellClick);
             // 
@@ -351,32 +351,11 @@
             this._formAdd_listBoxTables.TabIndex = 15;
             this._formAdd_listBoxTables.SelectedIndexChanged += new System.EventHandler(this._formAdd_listBoxTables_SelectedIndexChanged);
             // 
-            // _formAdd_buttonDownTable
-            // 
-            this._formAdd_buttonDownTable.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_formAdd_buttonDownTable.BackgroundImage")));
-            this._formAdd_buttonDownTable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this._formAdd_buttonDownTable.Location = new System.Drawing.Point(198, 48);
-            this._formAdd_buttonDownTable.Name = "_formAdd_buttonDownTable";
-            this._formAdd_buttonDownTable.Size = new System.Drawing.Size(23, 23);
-            this._formAdd_buttonDownTable.TabIndex = 17;
-            this._formAdd_buttonDownTable.UseVisualStyleBackColor = true;
-            this._formAdd_buttonDownTable.Click += new System.EventHandler(this._formAdd_buttonDownTable_Click);
-            // 
-            // _formAdd_buttonUpTable
-            // 
-            this._formAdd_buttonUpTable.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_formAdd_buttonUpTable.BackgroundImage")));
-            this._formAdd_buttonUpTable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this._formAdd_buttonUpTable.Location = new System.Drawing.Point(198, 19);
-            this._formAdd_buttonUpTable.Name = "_formAdd_buttonUpTable";
-            this._formAdd_buttonUpTable.Size = new System.Drawing.Size(23, 23);
-            this._formAdd_buttonUpTable.TabIndex = 16;
-            this._formAdd_buttonUpTable.UseVisualStyleBackColor = true;
-            this._formAdd_buttonUpTable.Click += new System.EventHandler(this._formAdd_buttonUpTable_Click);
-            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this._formAdd_buttonFilter);
             this.groupBox2.Controls.Add(this._formAdd_buttonDelete);
             this.groupBox2.Controls.Add(this._formAdd_listBoxColumns);
             this.groupBox2.Controls.Add(this._formAdd_buttonDownColumn);
@@ -388,39 +367,6 @@
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Columnas";
-            // 
-            // _formAdd_buttonDelete
-            // 
-            this._formAdd_buttonDelete.BackgroundImage = global::TSReports.Properties.Resources.delete1;
-            this._formAdd_buttonDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this._formAdd_buttonDelete.Location = new System.Drawing.Point(203, 96);
-            this._formAdd_buttonDelete.Name = "_formAdd_buttonDelete";
-            this._formAdd_buttonDelete.Size = new System.Drawing.Size(23, 23);
-            this._formAdd_buttonDelete.TabIndex = 15;
-            this._formAdd_buttonDelete.UseVisualStyleBackColor = true;
-            this._formAdd_buttonDelete.Click += new System.EventHandler(this._formAdd_buttonDelete_Click);
-            // 
-            // _formAdd_buttonDownColumn
-            // 
-            this._formAdd_buttonDownColumn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_formAdd_buttonDownColumn.BackgroundImage")));
-            this._formAdd_buttonDownColumn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this._formAdd_buttonDownColumn.Location = new System.Drawing.Point(203, 48);
-            this._formAdd_buttonDownColumn.Name = "_formAdd_buttonDownColumn";
-            this._formAdd_buttonDownColumn.Size = new System.Drawing.Size(23, 23);
-            this._formAdd_buttonDownColumn.TabIndex = 14;
-            this._formAdd_buttonDownColumn.UseVisualStyleBackColor = true;
-            this._formAdd_buttonDownColumn.Click += new System.EventHandler(this._formAdd_buttonDownColumn_Click);
-            // 
-            // _formAdd_buttonUpColumn
-            // 
-            this._formAdd_buttonUpColumn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_formAdd_buttonUpColumn.BackgroundImage")));
-            this._formAdd_buttonUpColumn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this._formAdd_buttonUpColumn.Location = new System.Drawing.Point(203, 19);
-            this._formAdd_buttonUpColumn.Name = "_formAdd_buttonUpColumn";
-            this._formAdd_buttonUpColumn.Size = new System.Drawing.Size(23, 23);
-            this._formAdd_buttonUpColumn.TabIndex = 13;
-            this._formAdd_buttonUpColumn.UseVisualStyleBackColor = true;
-            this._formAdd_buttonUpColumn.Click += new System.EventHandler(this._formAdd_buttonUpColumn_Click);
             // 
             // groupBox1
             // 
@@ -459,11 +405,78 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(7, 7);
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Location = new System.Drawing.Point(3, 3);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(563, 354);
+            this.richTextBox1.Size = new System.Drawing.Size(676, 388);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
+            // 
+            // _formAdd_buttonDownTable
+            // 
+            this._formAdd_buttonDownTable.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_formAdd_buttonDownTable.BackgroundImage")));
+            this._formAdd_buttonDownTable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._formAdd_buttonDownTable.Location = new System.Drawing.Point(198, 48);
+            this._formAdd_buttonDownTable.Name = "_formAdd_buttonDownTable";
+            this._formAdd_buttonDownTable.Size = new System.Drawing.Size(23, 23);
+            this._formAdd_buttonDownTable.TabIndex = 17;
+            this._formAdd_buttonDownTable.UseVisualStyleBackColor = true;
+            this._formAdd_buttonDownTable.Click += new System.EventHandler(this._formAdd_buttonDownTable_Click);
+            // 
+            // _formAdd_buttonUpTable
+            // 
+            this._formAdd_buttonUpTable.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_formAdd_buttonUpTable.BackgroundImage")));
+            this._formAdd_buttonUpTable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._formAdd_buttonUpTable.Location = new System.Drawing.Point(198, 19);
+            this._formAdd_buttonUpTable.Name = "_formAdd_buttonUpTable";
+            this._formAdd_buttonUpTable.Size = new System.Drawing.Size(23, 23);
+            this._formAdd_buttonUpTable.TabIndex = 16;
+            this._formAdd_buttonUpTable.UseVisualStyleBackColor = true;
+            this._formAdd_buttonUpTable.Click += new System.EventHandler(this._formAdd_buttonUpTable_Click);
+            // 
+            // _formAdd_buttonFilter
+            // 
+            this._formAdd_buttonFilter.BackgroundImage = global::TSReports.Properties.Resources.filter;
+            this._formAdd_buttonFilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._formAdd_buttonFilter.Location = new System.Drawing.Point(203, 125);
+            this._formAdd_buttonFilter.Name = "_formAdd_buttonFilter";
+            this._formAdd_buttonFilter.Size = new System.Drawing.Size(23, 23);
+            this._formAdd_buttonFilter.TabIndex = 16;
+            this._formAdd_buttonFilter.UseVisualStyleBackColor = true;
+            this._formAdd_buttonFilter.Click += new System.EventHandler(this._formAdd_buttonFilter_Click);
+            // 
+            // _formAdd_buttonDelete
+            // 
+            this._formAdd_buttonDelete.BackgroundImage = global::TSReports.Properties.Resources.delete1;
+            this._formAdd_buttonDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._formAdd_buttonDelete.Location = new System.Drawing.Point(203, 96);
+            this._formAdd_buttonDelete.Name = "_formAdd_buttonDelete";
+            this._formAdd_buttonDelete.Size = new System.Drawing.Size(23, 23);
+            this._formAdd_buttonDelete.TabIndex = 15;
+            this._formAdd_buttonDelete.UseVisualStyleBackColor = true;
+            this._formAdd_buttonDelete.Click += new System.EventHandler(this._formAdd_buttonDelete_Click);
+            // 
+            // _formAdd_buttonDownColumn
+            // 
+            this._formAdd_buttonDownColumn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_formAdd_buttonDownColumn.BackgroundImage")));
+            this._formAdd_buttonDownColumn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._formAdd_buttonDownColumn.Location = new System.Drawing.Point(203, 48);
+            this._formAdd_buttonDownColumn.Name = "_formAdd_buttonDownColumn";
+            this._formAdd_buttonDownColumn.Size = new System.Drawing.Size(23, 23);
+            this._formAdd_buttonDownColumn.TabIndex = 14;
+            this._formAdd_buttonDownColumn.UseVisualStyleBackColor = true;
+            this._formAdd_buttonDownColumn.Click += new System.EventHandler(this._formAdd_buttonDownColumn_Click);
+            // 
+            // _formAdd_buttonUpColumn
+            // 
+            this._formAdd_buttonUpColumn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_formAdd_buttonUpColumn.BackgroundImage")));
+            this._formAdd_buttonUpColumn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._formAdd_buttonUpColumn.Location = new System.Drawing.Point(203, 19);
+            this._formAdd_buttonUpColumn.Name = "_formAdd_buttonUpColumn";
+            this._formAdd_buttonUpColumn.Size = new System.Drawing.Size(23, 23);
+            this._formAdd_buttonUpColumn.TabIndex = 13;
+            this._formAdd_buttonUpColumn.UseVisualStyleBackColor = true;
+            this._formAdd_buttonUpColumn.Click += new System.EventHandler(this._formAdd_buttonUpColumn_Click);
             // 
             // FormAdd
             // 
@@ -532,5 +545,6 @@
         private System.Windows.Forms.ListBox _formAdd_listBoxTables;
         private System.Windows.Forms.Button _formAdd_buttonDownTable;
         private System.Windows.Forms.Button _formAdd_buttonUpTable;
+        private System.Windows.Forms.Button _formAdd_buttonFilter;
     }
 }

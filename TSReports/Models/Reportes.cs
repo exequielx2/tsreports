@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TSReports.Models.Entities;
 using TSReports.Services;
 
@@ -62,6 +63,12 @@ namespace TSReports.Models
             }
             return false;
         }
-         
+
+        public List<string> Groups()
+        {
+             return this.reportes.Where(r=>r.grupo != "default").GroupBy(r => r.id).Select(r => r.First().grupo).ToList();
+        }
+
     }
+     
 }
