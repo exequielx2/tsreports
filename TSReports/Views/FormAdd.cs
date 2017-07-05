@@ -227,7 +227,7 @@ namespace TSReports.Views
             if (found) {
                 DialogResult dialogResult = MessageBox.Show("El campo ya existe en la proyección\n ¿desea replicar la tabla?", "Replicar Tabla", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes) {
-                    if (!Relacionar(tabla,idcampo)) { return; }
+                    if (!Relacionar(tabla,idtabla)) { return; }
                     tabla = Utils.Utils.DeepCopy<Tabla>(Tablas.Instance.Get(idtabla));
                     tabla.alias = Utils.Utils.TableAlias();
                     tabla.campos.Clear();
@@ -237,7 +237,7 @@ namespace TSReports.Views
                 }
             } else {
                 if (!_formAdd_listBoxTables.Items.Contains(tabla)) {
-                    if (!Relacionar(tabla,idcampo)) { return; }
+                    if (!Relacionar(tabla, idtabla)) { return; }
                     _formAdd_listBoxTables.Items.Add(tabla);
                 }
             }
@@ -253,13 +253,10 @@ namespace TSReports.Views
         //consulto relaciones intermedias.
         private bool Relacionar(Tabla tabla , int iddestino)
         {
-            List<int> idsdestino = new List<int>() { iddestino }; 
-            List<int> idsorigen = new List<int>();
-            foreach (Campo c in this._formAdd_listBoxColumns.Items) {
-                idsorigen.Add(c.id);
-            }
-            if(idsorigen.Count() == 0) { return true; }//si es la primera tabla
-            dynamic resp = Tablas.Instance.Relaciones(idsorigen, idsdestino);
+            if (this._formAdd_listBoxColumns.Items.Count == 0) { return true; }//si es la primera tabla
+
+            Tabla t_origen = ((Campo)this._formAdd_listBoxColumns.Items[_formAdd_listBoxColumns.Items.Count - 1]).tabla;
+            dynamic resp = Tablas.Instance.Relaciones(new List<int>() { t_origen.id }, new List<int>() { iddestino });
             if (resp != null) {
                 if(resp.data == null) {
                     return false;
@@ -289,6 +286,8 @@ namespace TSReports.Views
                         _t.relacion = new Relacion();
                         _t.relacion.campoorigen = GetOriginalCampo(idcampoorigen);
                         _t.relacion.campodestino = GetOriginalCampo(idcampodestino);
+                        _t.relacion.campodestino.tabla = t_origen;
+
                         _formAdd_listBoxTables.Items.Add(_t); 
 
                         return true;

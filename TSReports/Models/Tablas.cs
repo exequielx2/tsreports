@@ -70,19 +70,7 @@ namespace TSReports.Models
         public dynamic Relaciones(List<int> idsorigen, List<int> idsdestino)
         {
             if(idsorigen.Count == 0 || idsdestino.Count == 0) { return null; }
-            List<int> idso = new List<int>();
-            List<int> idsd = new List<int>();
-            foreach (Tabla t in this.tablas) {
-                foreach (Campo c in t.campos) {
-                    if (idsorigen.Contains(c.id)) {
-                        idso.Add(t.id);
-                    }
-                    if (idsdestino.Contains(c.id)) {
-                        idsd.Add(t.id);
-                    }
-                }
-            }
-           return ReporteService.Instance.Relaciones(new { origen = idso, destino = idsd });
+           return ReporteService.Instance.Relaciones(new { origen = idsorigen, destino = idsdestino });
         }
 
     }
