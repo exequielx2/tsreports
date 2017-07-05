@@ -74,6 +74,7 @@ namespace TSReports.Views
                             TreeNode nodocampos = new TreeNode((string)campos.campo_origen + "-" + (string)campos.campo_destino);
                             nodocampos.Tag = campos;
                             treeView1.Nodes[indexdestino].Nodes.Add(nodocampos);
+                            treeView1.Nodes[indexdestino].ExpandAll();
                             tree1aux.Nodes[indexdestino].Nodes.Add((TreeNode)nodocampos.Clone());
                         }
                     }
@@ -92,6 +93,7 @@ namespace TSReports.Views
                         {
                             TreeNode nodocampos = new TreeNode((string)campos.campo_origen + "-" + (string)campos.campo_destino);
                             nodocampos.Tag = campos;
+                            treeView2.Nodes[indexdestino].ExpandAll();
                             treeView2.Nodes[indexdestino].Nodes.Add(nodocampos);
                             tree2aux.Nodes[indexdestino].Nodes.Add((TreeNode)nodocampos.Clone());
                         }
