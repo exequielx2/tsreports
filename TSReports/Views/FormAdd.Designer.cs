@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Cargando tablas...");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Cargando tablas...");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdd));
             this._formAdd_treeViewReportes = new System.Windows.Forms.TreeView();
             this._formAdd_listBoxColumns = new System.Windows.Forms.ListBox();
@@ -54,16 +54,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this._formAdd_listBoxTables = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this._formAdd_buttonDownTable = new System.Windows.Forms.Button();
-            this._formAdd_buttonUpTable = new System.Windows.Forms.Button();
             this._formAdd_buttonFilter = new System.Windows.Forms.Button();
             this._formAdd_buttonDelete = new System.Windows.Forms.Button();
             this._formAdd_buttonDownColumn = new System.Windows.Forms.Button();
             this._formAdd_buttonUpColumn = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this._formAdd_rbSQL = new System.Windows.Forms.RichTextBox();
             this._formAdd_panelPropColumns.SuspendLayout();
             this._formAdd_panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._formAdd_dataGridViewFilters)).BeginInit();
@@ -84,10 +82,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this._formAdd_treeViewReportes.Location = new System.Drawing.Point(6, 48);
             this._formAdd_treeViewReportes.Name = "_formAdd_treeViewReportes";
-            treeNode3.Name = "Nodo0";
-            treeNode3.Text = "Cargando tablas...";
+            treeNode1.Name = "Nodo0";
+            treeNode1.Text = "Cargando tablas...";
             this._formAdd_treeViewReportes.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode1});
             this._formAdd_treeViewReportes.Size = new System.Drawing.Size(188, 317);
             this._formAdd_treeViewReportes.TabIndex = 5;
             this._formAdd_treeViewReportes.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this._formAdd_treeViewReportes_AfterCollapse);
@@ -203,7 +201,7 @@
             this._formAdd_panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this._formAdd_panelTop.Location = new System.Drawing.Point(0, 0);
             this._formAdd_panelTop.Name = "_formAdd_panelTop";
-            this._formAdd_panelTop.Size = new System.Drawing.Size(690, 30);
+            this._formAdd_panelTop.Size = new System.Drawing.Size(665, 30);
             this._formAdd_panelTop.TabIndex = 9;
             // 
             // _formAdd_comboBoxGrupo
@@ -265,7 +263,7 @@
             this._formAdd_dataGridViewFilters.Location = new System.Drawing.Point(3, 3);
             this._formAdd_dataGridViewFilters.MultiSelect = false;
             this._formAdd_dataGridViewFilters.Name = "_formAdd_dataGridViewFilters";
-            this._formAdd_dataGridViewFilters.Size = new System.Drawing.Size(676, 388);
+            this._formAdd_dataGridViewFilters.Size = new System.Drawing.Size(651, 388);
             this._formAdd_dataGridViewFilters.TabIndex = 22;
             this._formAdd_dataGridViewFilters.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this._formAdd_dataGridViewFilters_CellClick);
             // 
@@ -278,7 +276,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(690, 420);
+            this.tabControl1.Size = new System.Drawing.Size(665, 420);
             this.tabControl1.TabIndex = 23;
             this.tabControl1.TabStop = false;
             // 
@@ -290,7 +288,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(682, 394);
+            this.tabPage1.Size = new System.Drawing.Size(657, 394);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Campos";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -301,11 +299,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox3.Controls.Add(this._formAdd_panelPropTable);
             this.groupBox3.Controls.Add(this._formAdd_listBoxTables);
-            this.groupBox3.Controls.Add(this._formAdd_buttonDownTable);
-            this.groupBox3.Controls.Add(this._formAdd_buttonUpTable);
             this.groupBox3.Location = new System.Drawing.Point(448, 11);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(227, 375);
+            this.groupBox3.Size = new System.Drawing.Size(201, 375);
             this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tablas";
@@ -369,72 +365,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Columnas";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox1.Controls.Add(this._formAdd_treeViewReportes);
-            this.groupBox1.Controls.Add(this._formAdd_textBoxFilter);
-            this.groupBox1.Location = new System.Drawing.Point(4, 11);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 371);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Origen";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this._formAdd_dataGridViewFilters);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(682, 394);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Filtros";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.richTextBox1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(682, 394);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "SQL";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(3, 3);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(676, 388);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            // 
-            // _formAdd_buttonDownTable
-            // 
-            this._formAdd_buttonDownTable.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_formAdd_buttonDownTable.BackgroundImage")));
-            this._formAdd_buttonDownTable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this._formAdd_buttonDownTable.Location = new System.Drawing.Point(198, 48);
-            this._formAdd_buttonDownTable.Name = "_formAdd_buttonDownTable";
-            this._formAdd_buttonDownTable.Size = new System.Drawing.Size(23, 23);
-            this._formAdd_buttonDownTable.TabIndex = 19;
-            this._formAdd_buttonDownTable.UseVisualStyleBackColor = true;
-            this._formAdd_buttonDownTable.Click += new System.EventHandler(this._formAdd_buttonDownTable_Click);
-            // 
-            // _formAdd_buttonUpTable
-            // 
-            this._formAdd_buttonUpTable.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_formAdd_buttonUpTable.BackgroundImage")));
-            this._formAdd_buttonUpTable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this._formAdd_buttonUpTable.Location = new System.Drawing.Point(198, 19);
-            this._formAdd_buttonUpTable.Name = "_formAdd_buttonUpTable";
-            this._formAdd_buttonUpTable.Size = new System.Drawing.Size(23, 23);
-            this._formAdd_buttonUpTable.TabIndex = 18;
-            this._formAdd_buttonUpTable.UseVisualStyleBackColor = true;
-            this._formAdd_buttonUpTable.Click += new System.EventHandler(this._formAdd_buttonUpTable_Click);
-            // 
             // _formAdd_buttonFilter
             // 
             this._formAdd_buttonFilter.BackgroundImage = global::TSReports.Properties.Resources.filter;
@@ -479,11 +409,55 @@
             this._formAdd_buttonUpColumn.UseVisualStyleBackColor = true;
             this._formAdd_buttonUpColumn.Click += new System.EventHandler(this._formAdd_buttonUpColumn_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this._formAdd_treeViewReportes);
+            this.groupBox1.Controls.Add(this._formAdd_textBoxFilter);
+            this.groupBox1.Location = new System.Drawing.Point(4, 11);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 371);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Origen";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this._formAdd_dataGridViewFilters);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(657, 394);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Filtros";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this._formAdd_rbSQL);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(657, 394);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "SQL";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // _formAdd_rbSQL
+            // 
+            this._formAdd_rbSQL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._formAdd_rbSQL.Location = new System.Drawing.Point(3, 3);
+            this._formAdd_rbSQL.Name = "_formAdd_rbSQL";
+            this._formAdd_rbSQL.Size = new System.Drawing.Size(651, 388);
+            this._formAdd_rbSQL.TabIndex = 0;
+            this._formAdd_rbSQL.Text = "";
+            // 
             // FormAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(690, 450);
+            this.ClientSize = new System.Drawing.Size(665, 450);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this._formAdd_panelTop);
             this.ForeColor = System.Drawing.SystemColors.Control;
@@ -530,7 +504,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox _formAdd_rbSQL;
         private System.Windows.Forms.TextBox _formAdd_textBoxAliasColumn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button _formAdd_buttonDelete;
@@ -544,8 +518,6 @@
         private System.Windows.Forms.TextBox _formAdd_textBoxAliasTable;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox _formAdd_listBoxTables;
-        private System.Windows.Forms.Button _formAdd_buttonDownTable;
-        private System.Windows.Forms.Button _formAdd_buttonUpTable;
         private System.Windows.Forms.Button _formAdd_buttonFilter;
     }
 }

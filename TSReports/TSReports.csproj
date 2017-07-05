@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Models\Entities\Campo.cs" />
     <Compile Include="Models\Entities\Filtro.cs" />
+    <Compile Include="Models\Entities\Relacion.cs" />
     <Compile Include="Models\Entities\Reporte.cs" />
     <Compile Include="Models\Entities\Tabla.cs" />
     <Compile Include="Models\Reportes.cs" />

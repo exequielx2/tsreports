@@ -15,7 +15,7 @@ namespace TSReports.Models.Entities
         public string titulo { get; set; }
         public string alias { get; set; }
         public List<Campo> campos { get; set; }
-
-       
+        public string nombre { get; set; }
+        public Relacion relacion { get; set; }
     }
 }

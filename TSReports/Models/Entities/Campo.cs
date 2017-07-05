@@ -11,6 +11,7 @@ namespace TSReports.Models.Entities
         public int id { get; set; }
         public int idtabla { get; set; }
         public string titulo { get; set; }
+        public string nombre { get; set; }
         public string alias { get; set; }
         public bool visible { get; set; } = true;
         public int orden { get; set; }

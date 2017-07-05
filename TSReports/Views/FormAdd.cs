@@ -102,27 +102,7 @@ namespace TSReports.Views
 
             }
         }
-
-        private void _formAdd_buttonUpTable_Click(object sender, EventArgs e)
-        {
-            int selectedIndex = _formAdd_listBoxTables.SelectedIndex;
-            if (selectedIndex > 0) {
-                _formAdd_listBoxTables.Items.Insert(selectedIndex - 1, _formAdd_listBoxTables.Items[selectedIndex]);
-                _formAdd_listBoxTables.Items.RemoveAt(selectedIndex + 1);
-                _formAdd_listBoxTables.SelectedIndex = selectedIndex - 1;
-            }
-        }
-
-        private void _formAdd_buttonDownTable_Click(object sender, EventArgs e)
-        {
-            int selectedIndex = _formAdd_listBoxTables.SelectedIndex;
-            if (selectedIndex < _formAdd_listBoxTables.Items.Count - 1 & selectedIndex != -1) {
-                _formAdd_listBoxTables.Items.Insert(selectedIndex + 2, _formAdd_listBoxTables.Items[selectedIndex]);
-                _formAdd_listBoxTables.Items.RemoveAt(selectedIndex);
-                _formAdd_listBoxTables.SelectedIndex = selectedIndex + 1;
-
-            }
-        }
+        
 
         private void _formAdd_buttonDelete_Click(object sender, EventArgs e)
         {
@@ -223,6 +203,8 @@ namespace TSReports.Views
             if (selected == null || selected.Level == 0) { return; }
             int idcampo = Int32.Parse(selected.Name);
             int idtabla = Int32.Parse(selected.Parent.Name);
+             
+            //agrego la tabla y el campo a sus listboxes
             Tabla tabla = null;
             bool found = false;
             foreach (Tabla _t in _formAdd_listBoxTables.Items) {
@@ -245,6 +227,7 @@ namespace TSReports.Views
             if (found) {
                 DialogResult dialogResult = MessageBox.Show("El campo ya existe en la proyección\n ¿desea replicar la tabla?", "Replicar Tabla", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes) {
+                    if (!Relacionar(tabla,idcampo)) { return; }
                     tabla = Utils.Utils.DeepCopy<Tabla>(Tablas.Instance.Get(idtabla));
                     tabla.alias = Utils.Utils.TableAlias();
                     tabla.campos.Clear();
@@ -254,24 +237,11 @@ namespace TSReports.Views
                 }
             } else {
                 if (!_formAdd_listBoxTables.Items.Contains(tabla)) {
+                    if (!Relacionar(tabla,idcampo)) { return; }
                     _formAdd_listBoxTables.Items.Add(tabla);
                 }
             }
-
-            List<int> idsdestino = new List<int>();
-            idsdestino.Add(Int32.Parse(selected.Name));
-            List<int> idsorigen = new List<int>();
-            foreach (Campo c in this._formAdd_listBoxColumns.Items) {
-                idsorigen.Add(c.id);
-            }
-            /*   dynamic resp = Tablas.Instance.Relaciones(idsorigen, idsdestino);
-               if(resp != null) {
-                  FormChooseTable formct = new FormChooseTable(resp);
-                  if (formct.ShowDialog() == DialogResult.OK) {
-
-                  }
-               }*/
-
+             
             Campo campo = Utils.Utils.DeepCopy<Campo>(Tablas.Instance.GetCampo(idcampo));
             campo.alias = campo.titulo.ToUpper();
             campo.tabla = tabla;
@@ -279,6 +249,69 @@ namespace TSReports.Views
             _formAdd_listBoxColumns.Items.Add(campo);
             ///selected.Parent.Nodes.RemoveAt(selected.Index); remueve del tree
         }
+
+        //consulto relaciones intermedias.
+        private bool Relacionar(Tabla tabla , int iddestino)
+        {
+            List<int> idsdestino = new List<int>() { iddestino }; 
+            List<int> idsorigen = new List<int>();
+            foreach (Campo c in this._formAdd_listBoxColumns.Items) {
+                idsorigen.Add(c.id);
+            }
+            if(idsorigen.Count() == 0) { return true; }//si es la primera tabla
+            dynamic resp = Tablas.Instance.Relaciones(idsorigen, idsdestino);
+            if (resp != null) {
+                if(resp.data == null) {
+                    return false;
+                }else if ((resp.data[0]).discriminador == "unico") {
+                    dynamic destino = (resp.data[0]).destino[0];
+                    dynamic campos = destino.campos[0];
+                    tabla.relacion = new Relacion();
+                    tabla.relacion.campoorigen = GetOriginalCampo((int)campos.id_campo_origen);
+                    tabla.relacion.campodestino = GetOriginalCampo((int)campos.id_campo_destino);
+                    return true;
+                } else {
+                    FormChooseTable formct = new FormChooseTable(resp);
+                    if (formct.ShowDialog() == DialogResult.OK) {
+                        dynamic f_resp = formct.respuesta;
+                        int idcampoorigen = f_resp.relacionorigen.campoorigen.id_campo_origen; 
+                        int idcampodestino = f_resp.relacionorigen.campoorigen.id_campo_destino;
+                        //la tabla para el listbox la busco en las relaciones destino de las tablas
+                        tabla.relacion = new Relacion();
+                        tabla.relacion.campoorigen = GetOriginalCampo(idcampoorigen);
+                        tabla.relacion.campodestino = GetOriginalCampo(idcampodestino);
+
+                        idcampoorigen = f_resp.relaciondestino.campoorigen.id_campo_origen;
+                        idcampodestino = f_resp.relaciondestino.campoorigen.id_campo_destino;
+
+                        Tabla _t = tabla.relacion.campodestino.tabla;
+                        _t.alias = Utils.Utils.TableAlias();
+                        _t.relacion = new Relacion();
+                        _t.relacion.campoorigen = GetOriginalCampo(idcampoorigen);
+                        _t.relacion.campodestino = GetOriginalCampo(idcampodestino);
+                        _formAdd_listBoxTables.Items.Add(_t); 
+
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private Campo GetOriginalCampo(int id)
+        {
+            foreach(Tabla _t in Tablas.Instance.List()) {
+                Tabla _copytable = (Tabla)Utils.Utils.DeepCopy(_t);
+                foreach (Campo _c in _copytable.campos) {
+                    if(id == _c.id) {
+                        _c.tabla = _copytable;
+                        return _c;
+                    }
+                }
+            }
+            return null;
+        }
+        
         
         /*FILTRO ARBOL*/
         private void _formAdd_textBoxFilter_TextChanged(object sender, EventArgs e)
@@ -372,9 +405,7 @@ namespace TSReports.Views
                         _formAdd_listBoxTables.SelectedItem = _t;
                         break;
                     }
-                }
-
-
+                } 
             } else {
                 this._formAdd_panelPropColumns.Enabled = false;
             }
@@ -475,6 +506,16 @@ namespace TSReports.Views
         private void _formAdd_ButtonSave_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 2;
+            bool from = false;
+            foreach(Tabla _t in this._formAdd_listBoxTables.Items) {
+                if (!from) {
+                    _formAdd_rbSQL.Text += "SELECT * FROM "+_t.nombre+" "+_t.alias+"\n";
+                    from = true;
+                } else {
+                    _formAdd_rbSQL.Text += "LEFT JOIN " + _t.nombre + " " + _t.alias + " ON "+_t.alias+"."+_t.relacion.campoorigen.nombre+" = "+ _t.relacion.campodestino.tabla.alias + "."+_t.relacion.campodestino.nombre + "\n";
+                }
+                
+            }
         }
     }
 }
