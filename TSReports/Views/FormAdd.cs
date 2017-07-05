@@ -24,6 +24,7 @@ namespace TSReports.Views
             InitializeComponent();
         }
 
+        //ATAJOS DE TECLADO
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == (Keys.Control | Keys.F)) {
@@ -34,6 +35,53 @@ namespace TSReports.Views
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
+        //LOAD DEL FORM E INICIALIZACION DE COSAS
+        private void FormAdd_Load(object sender, EventArgs e)
+        {
+            _fieldsTreeCache = new TreeView();
+            _formAdd_listBoxColumns.DisplayMember = "titulo";
+            _formAdd_listBoxColumns.ValueMember = "id";
+            _formAdd_listBoxTables.DisplayMember = "titulo";
+            _formAdd_listBoxTables.ValueMember = "id";
+
+            _formAdd_dataGridViewFilters.ColumnCount = 7;
+            _formAdd_dataGridViewFilters.Columns[0].Name = "Tabla";
+            _formAdd_dataGridViewFilters.Columns[1].Name = "Alias";
+            _formAdd_dataGridViewFilters.Columns[2].Name = "Campo";
+            _formAdd_dataGridViewFilters.Columns[3].Name = "Tipo";
+            _formAdd_dataGridViewFilters.Columns[4].Name = "Valor Default";
+            _formAdd_dataGridViewFilters.Columns[5].Name = "Obligatorio";
+            _formAdd_dataGridViewFilters.Columns[5].Width = 60;
+            _formAdd_dataGridViewFilters.Columns[6].Name = "Borrar";
+            _formAdd_dataGridViewFilters.Columns[6].Width = 50;
+
+            this._formAdd_comboBoxGrupo.Items.AddRange(Reportes.Instance.Groups().ToArray());
+
+            ThreadStart hiloref = new ThreadStart(FillGrid);
+            this.hilo = new Thread(hiloref);
+            hilo.Start();
+        }
+
+        //HILO PARA LLENAR EL ARBOL
+        private void FillGrid()
+        {
+            List<Tabla> tablas = Tablas.Instance.List();
+            this._formAdd_treeViewReportes.Invoke(new Action(() => {
+                this._formAdd_treeViewReportes.Nodes.Clear();
+                this._formAdd_treeViewReportes.BeginUpdate();
+                foreach (Tabla t in tablas) {
+                    this._formAdd_treeViewReportes.Nodes.Add(t.id.ToString(), t.titulo);
+                    this._fieldsTreeCache.Nodes.Add(t.id.ToString(), t.titulo);
+                    foreach (Campo c in t.campos) {
+                        this._formAdd_treeViewReportes.Nodes[t.id.ToString()].Nodes.Add(c.id.ToString(), c.titulo);
+                        this._fieldsTreeCache.Nodes[t.id.ToString()].Nodes.Add(c.id.ToString(), c.titulo);
+                    }
+                }
+                this._formAdd_treeViewReportes.EndUpdate();
+            }));
+        }
+
+        /*BOTONES ELEMNTOS LISTBOX*/
         private void _formAdd_buttonUpColumn_Click(object sender, EventArgs e)
         {
             int selectedIndex = _formAdd_listBoxColumns.SelectedIndex;
@@ -104,6 +152,66 @@ namespace TSReports.Views
             }
         }
 
+        private void _formAdd_listBoxColumns_DoubleClick(object sender, EventArgs e)
+        {
+            AddFiler();
+        }
+
+        private void _formAdd_buttonFilter_Click(object sender, EventArgs e)
+        {
+            AddFiler();
+        }
+
+        private void AddFiler()
+        {
+            if (this._formAdd_listBoxColumns.SelectedIndex != -1) {
+                DataGridViewCell[] cells = new DataGridViewCell[] {
+                    new DataGridViewTextBoxCell(),
+                    new DataGridViewTextBoxCell(),
+                    new DataGridViewTextBoxCell(),
+                    new DataGridViewComboBoxCell(),
+                    new DataGridViewTextBoxCell(),
+                    new DataGridViewCheckBoxCell(),
+                    new DataGridViewButtonCell() };
+
+                Campo camposelected = (Campo)this._formAdd_listBoxColumns.SelectedItem;
+                ((DataGridViewTextBoxCell)cells[0]).Value = camposelected.tabla.titulo;
+                ((DataGridViewTextBoxCell)cells[0]).Style.ForeColor = Color.Black;
+
+                ((DataGridViewTextBoxCell)cells[1]).Value = camposelected.tabla.alias;
+                ((DataGridViewTextBoxCell)cells[1]).Style.ForeColor = Color.Black;
+
+                ((DataGridViewTextBoxCell)cells[2]).Value = camposelected.titulo;
+                ((DataGridViewTextBoxCell)cells[2]).Style.ForeColor = Color.Black;
+
+                ((DataGridViewComboBoxCell)cells[3]).ValueMember = "id";
+                ((DataGridViewComboBoxCell)cells[3]).DisplayMember = "descripcion";
+                ((DataGridViewComboBoxCell)cells[3]).Items.AddRange(camposelected.filtros.ToArray());
+                ((DataGridViewComboBoxCell)cells[3]).Style.ForeColor = Color.Black;
+                ((DataGridViewComboBoxCell)cells[3]).Value = ((DataGridViewComboBoxCell)cells[3]).Items[0];
+
+                ((DataGridViewTextBoxCell)cells[4]).Style.ForeColor = Color.Black;
+
+                ((DataGridViewCheckBoxCell)cells[5]).Value = true;
+
+                ((DataGridViewButtonCell)cells[6]).Value = "Borrar";
+                ((DataGridViewButtonCell)cells[6]).Style.ForeColor = Color.Black;
+
+                DataGridViewRow row = new DataGridViewRow();
+                row.Tag = camposelected;
+                row.Cells.AddRange(cells);
+                row.Cells[0].ReadOnly = true;
+
+                _formAdd_dataGridViewFilters.Rows.Add(row);
+
+                tabControl1.SelectedIndex = 1;
+
+            }
+        }
+
+        /*FIN BOTONES ELEMNTOS LISTBOX*/
+
+
         private void _formAdd_treeViewReportes_DoubleClick(object sender, EventArgs e)
         {
             TreeNode selected = ((TreeView)sender).SelectedNode;
@@ -171,53 +279,8 @@ namespace TSReports.Views
             _formAdd_listBoxColumns.Items.Add(campo);
             ///selected.Parent.Nodes.RemoveAt(selected.Index); remueve del tree
         }
-
-        private void FormAdd_Load(object sender, EventArgs e)
-        {
-            _fieldsTreeCache = new TreeView();
-            _formAdd_listBoxColumns.DisplayMember = "titulo";
-            _formAdd_listBoxColumns.ValueMember = "id";
-            _formAdd_listBoxTables.DisplayMember = "titulo";
-            _formAdd_listBoxTables.ValueMember = "id";
-
-            _formAdd_dataGridViewFilters.ColumnCount = 7;
-            _formAdd_dataGridViewFilters.Columns[0].Name = "Tabla";
-            _formAdd_dataGridViewFilters.Columns[1].Name = "Alias";
-            _formAdd_dataGridViewFilters.Columns[2].Name = "Campo";
-            _formAdd_dataGridViewFilters.Columns[3].Name = "Tipo";
-            _formAdd_dataGridViewFilters.Columns[4].Name = "Valor Default";
-            _formAdd_dataGridViewFilters.Columns[5].Name = "Obligatorio";
-            _formAdd_dataGridViewFilters.Columns[5].Width = 60;
-            _formAdd_dataGridViewFilters.Columns[6].Name = "Borrar";
-            _formAdd_dataGridViewFilters.Columns[6].Width = 50;
-
-            this._formAdd_comboBoxGrupo.Items.AddRange(Reportes.Instance.Groups().ToArray());
-
-            ThreadStart hiloref = new ThreadStart(FillGrid);
-            this.hilo = new Thread(hiloref);
-            hilo.Start();
-        }
-
-        private void FillGrid()
-        {
-            List<Tabla> tablas = Tablas.Instance.List();
-            this._formAdd_treeViewReportes.Invoke(new Action(() => {
-                this._formAdd_treeViewReportes.Nodes.Clear();
-                this._formAdd_treeViewReportes.BeginUpdate();
-                foreach (Tabla t in tablas) {
-                    this._formAdd_treeViewReportes.Nodes.Add(t.id.ToString(), t.titulo);
-                    this._fieldsTreeCache.Nodes.Add(t.id.ToString(), t.titulo);
-                    foreach (Campo c in t.campos) {
-                        this._formAdd_treeViewReportes.Nodes[t.id.ToString()].Nodes.Add(c.id.ToString(), c.titulo);
-                        this._fieldsTreeCache.Nodes[t.id.ToString()].Nodes.Add(c.id.ToString(), c.titulo);
-                    }
-                }
-                this._formAdd_treeViewReportes.EndUpdate();
-            }));
-        }
-
-
-
+        
+        /*FILTRO ARBOL*/
         private void _formAdd_textBoxFilter_TextChanged(object sender, EventArgs e)
         {
             RestartNodes();
@@ -248,6 +311,8 @@ namespace TSReports.Views
             }
 
         }
+       
+
         private void RemoveChildNodes(int parentnodeindex)
         {
             List<TreeNode> removes = new List<TreeNode>();
@@ -265,6 +330,7 @@ namespace TSReports.Views
                 rm.Remove();
             }
         }
+        /*FIN FILTRO ARBOL*/
 
         private void _formAdd_treeViewReportes_AfterExpand(object sender, TreeViewEventArgs e)
         {
@@ -315,6 +381,7 @@ namespace TSReports.Views
 
         }
 
+        //*PROPIEDADES DE COLUMNAS Y TABLAS*/
         private void _formAdd_radioButtonDesc_CheckedChanged(object sender, EventArgs e)
         {
             if (this._formAdd_listBoxColumns.SelectedIndex != -1) {
@@ -346,63 +413,9 @@ namespace TSReports.Views
                 ((Tabla)this._formAdd_listBoxTables.SelectedItem).alias = this._formAdd_textBoxAliasTable.Text;
             }
         }
+        //FIN PROPIEDADES DE COLUMNAS Y TABLAS*/
 
-        private void _formAdd_listBoxColumns_DoubleClick(object sender, EventArgs e)
-        {
-            AddFiler();
-        }
-
-        private void _formAdd_buttonFilter_Click(object sender, EventArgs e)
-        {
-            AddFiler();
-        }
-
-        private void AddFiler()
-        {
-            if (this._formAdd_listBoxColumns.SelectedIndex != -1) {
-                DataGridViewCell[] cells = new DataGridViewCell[] {
-                    new DataGridViewTextBoxCell(),
-                    new DataGridViewTextBoxCell(),
-                    new DataGridViewTextBoxCell(),
-                    new DataGridViewComboBoxCell(),
-                    new DataGridViewTextBoxCell(),
-                    new DataGridViewCheckBoxCell(),
-                    new DataGridViewButtonCell() };
-
-                Campo camposelected = (Campo)this._formAdd_listBoxColumns.SelectedItem;
-                ((DataGridViewTextBoxCell)cells[0]).Value = camposelected.tabla.titulo;
-                ((DataGridViewTextBoxCell)cells[0]).Style.ForeColor = Color.Black;
-
-                ((DataGridViewTextBoxCell)cells[1]).Value = camposelected.tabla.alias;
-                ((DataGridViewTextBoxCell)cells[1]).Style.ForeColor = Color.Black;
-
-                ((DataGridViewTextBoxCell)cells[2]).Value = camposelected.titulo;
-                ((DataGridViewTextBoxCell)cells[2]).Style.ForeColor = Color.Black;
-
-                ((DataGridViewComboBoxCell)cells[3]).ValueMember = "id";
-                ((DataGridViewComboBoxCell)cells[3]).DisplayMember = "descripcion";
-                ((DataGridViewComboBoxCell)cells[3]).Items.AddRange(camposelected.filtros.ToArray());
-                ((DataGridViewComboBoxCell)cells[3]).Style.ForeColor = Color.Black;
-                ((DataGridViewComboBoxCell)cells[3]).Value = ((DataGridViewComboBoxCell)cells[3]).Items[0];
-
-                ((DataGridViewTextBoxCell)cells[4]).Style.ForeColor = Color.Black;
-
-                ((DataGridViewCheckBoxCell)cells[5]).Value = true;
-
-                ((DataGridViewButtonCell)cells[6]).Value = "Borrar";
-                ((DataGridViewButtonCell)cells[6]).Style.ForeColor = Color.Black;
-
-                DataGridViewRow row = new DataGridViewRow();
-                row.Tag = camposelected;
-                row.Cells.AddRange(cells);
-                row.Cells[0].ReadOnly = true;
-
-                _formAdd_dataGridViewFilters.Rows.Add(row);
-
-                tabControl1.SelectedIndex = 1;
-
-            }
-        }
+     
 
         private void _formAdd_dataGridViewFilters_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -428,6 +441,7 @@ namespace TSReports.Views
             }
         }
 
+        /*DRAG DROP*/
         private void _formAdd_treeViewReportes_ItemDrag(object sender, ItemDragEventArgs e)
         {
             TreeNode selected = ((TreeView)sender).SelectedNode;
@@ -456,6 +470,7 @@ namespace TSReports.Views
         {
             _formAdd_treeViewReportes.SelectedNode = _formAdd_treeViewReportes.GetNodeAt(e.X, e.Y);
         }
+        /*FIN DRAG DROP*/
 
         private void _formAdd_ButtonSave_Click(object sender, EventArgs e)
         {

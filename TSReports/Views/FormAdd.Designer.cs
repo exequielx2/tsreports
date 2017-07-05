@@ -89,7 +89,7 @@
             this._formAdd_treeViewReportes.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3});
             this._formAdd_treeViewReportes.Size = new System.Drawing.Size(188, 317);
-            this._formAdd_treeViewReportes.TabIndex = 0;
+            this._formAdd_treeViewReportes.TabIndex = 5;
             this._formAdd_treeViewReportes.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this._formAdd_treeViewReportes_AfterCollapse);
             this._formAdd_treeViewReportes.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this._formAdd_treeViewReportes_AfterExpand);
             this._formAdd_treeViewReportes.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this._formAdd_treeViewReportes_ItemDrag);
@@ -107,7 +107,7 @@
             this._formAdd_listBoxColumns.MultiColumn = true;
             this._formAdd_listBoxColumns.Name = "_formAdd_listBoxColumns";
             this._formAdd_listBoxColumns.Size = new System.Drawing.Size(188, 264);
-            this._formAdd_listBoxColumns.TabIndex = 4;
+            this._formAdd_listBoxColumns.TabIndex = 7;
             this._formAdd_listBoxColumns.SelectedIndexChanged += new System.EventHandler(this._formAdd_listBoxColumns_SelectedIndexChanged);
             this._formAdd_listBoxColumns.DragDrop += new System.Windows.Forms.DragEventHandler(this._formAdd_listBoxColumns_DragDrop);
             this._formAdd_listBoxColumns.DragEnter += new System.Windows.Forms.DragEventHandler(this._formAdd_treeViewReportes_listBoxColumns_DragOver);
@@ -136,7 +136,7 @@
             this._formAdd_checkBoxVisible.Location = new System.Drawing.Point(7, 57);
             this._formAdd_checkBoxVisible.Name = "_formAdd_checkBoxVisible";
             this._formAdd_checkBoxVisible.Size = new System.Drawing.Size(56, 17);
-            this._formAdd_checkBoxVisible.TabIndex = 7;
+            this._formAdd_checkBoxVisible.TabIndex = 15;
             this._formAdd_checkBoxVisible.Text = "Visible";
             this._formAdd_checkBoxVisible.UseVisualStyleBackColor = true;
             this._formAdd_checkBoxVisible.CheckedChanged += new System.EventHandler(this._formAdd_checkBoxVisible_CheckedChanged);
@@ -146,7 +146,7 @@
             this._formAdd_textBoxAliasColumn.Location = new System.Drawing.Point(42, 7);
             this._formAdd_textBoxAliasColumn.Name = "_formAdd_textBoxAliasColumn";
             this._formAdd_textBoxAliasColumn.Size = new System.Drawing.Size(133, 20);
-            this._formAdd_textBoxAliasColumn.TabIndex = 4;
+            this._formAdd_textBoxAliasColumn.TabIndex = 12;
             this._formAdd_textBoxAliasColumn.TextChanged += new System.EventHandler(this._formAdd_textBoxAliasColumn_TextChanged);
             // 
             // _formAdd_radioButtonDesc
@@ -156,7 +156,7 @@
             this._formAdd_radioButtonDesc.Location = new System.Drawing.Point(86, 33);
             this._formAdd_radioButtonDesc.Name = "_formAdd_radioButtonDesc";
             this._formAdd_radioButtonDesc.Size = new System.Drawing.Size(89, 17);
-            this._formAdd_radioButtonDesc.TabIndex = 6;
+            this._formAdd_radioButtonDesc.TabIndex = 14;
             this._formAdd_radioButtonDesc.Text = "Descendente";
             this._formAdd_radioButtonDesc.UseVisualStyleBackColor = true;
             this._formAdd_radioButtonDesc.CheckedChanged += new System.EventHandler(this._formAdd_radioButtonDesc_CheckedChanged);
@@ -179,7 +179,7 @@
             this._formAdd_radioButtonAsc.Location = new System.Drawing.Point(7, 33);
             this._formAdd_radioButtonAsc.Name = "_formAdd_radioButtonAsc";
             this._formAdd_radioButtonAsc.Size = new System.Drawing.Size(82, 17);
-            this._formAdd_radioButtonAsc.TabIndex = 5;
+            this._formAdd_radioButtonAsc.TabIndex = 13;
             this._formAdd_radioButtonAsc.TabStop = true;
             this._formAdd_radioButtonAsc.Text = "Ascendente";
             this._formAdd_radioButtonAsc.UseVisualStyleBackColor = true;
@@ -189,7 +189,7 @@
             this._formAdd_textBoxFilter.Location = new System.Drawing.Point(5, 19);
             this._formAdd_textBoxFilter.Name = "_formAdd_textBoxFilter";
             this._formAdd_textBoxFilter.Size = new System.Drawing.Size(189, 20);
-            this._formAdd_textBoxFilter.TabIndex = 8;
+            this._formAdd_textBoxFilter.TabIndex = 4;
             this._formAdd_textBoxFilter.TextChanged += new System.EventHandler(this._formAdd_textBoxFilter_TextChanged);
             // 
             // _formAdd_panelTop
@@ -212,7 +212,7 @@
             this._formAdd_comboBoxGrupo.Location = new System.Drawing.Point(259, 3);
             this._formAdd_comboBoxGrupo.Name = "_formAdd_comboBoxGrupo";
             this._formAdd_comboBoxGrupo.Size = new System.Drawing.Size(148, 21);
-            this._formAdd_comboBoxGrupo.TabIndex = 3;
+            this._formAdd_comboBoxGrupo.TabIndex = 1;
             // 
             // _formAdd_ButtonSave
             // 
@@ -221,7 +221,7 @@
             this._formAdd_ButtonSave.Location = new System.Drawing.Point(440, 2);
             this._formAdd_ButtonSave.Name = "_formAdd_ButtonSave";
             this._formAdd_ButtonSave.Size = new System.Drawing.Size(75, 23);
-            this._formAdd_ButtonSave.TabIndex = 10;
+            this._formAdd_ButtonSave.TabIndex = 21;
             this._formAdd_ButtonSave.Text = "Guardar";
             this._formAdd_ButtonSave.UseVisualStyleBackColor = true;
             this._formAdd_ButtonSave.Click += new System.EventHandler(this._formAdd_ButtonSave_Click);
@@ -266,7 +266,7 @@
             this._formAdd_dataGridViewFilters.MultiSelect = false;
             this._formAdd_dataGridViewFilters.Name = "_formAdd_dataGridViewFilters";
             this._formAdd_dataGridViewFilters.Size = new System.Drawing.Size(676, 388);
-            this._formAdd_dataGridViewFilters.TabIndex = 11;
+            this._formAdd_dataGridViewFilters.TabIndex = 22;
             this._formAdd_dataGridViewFilters.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this._formAdd_dataGridViewFilters_CellClick);
             // 
             // tabControl1
@@ -279,7 +279,8 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(690, 420);
-            this.tabControl1.TabIndex = 12;
+            this.tabControl1.TabIndex = 23;
+            this.tabControl1.TabStop = false;
             // 
             // tabPage1
             // 
@@ -305,7 +306,7 @@
             this.groupBox3.Location = new System.Drawing.Point(448, 11);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(227, 375);
-            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tablas";
             // 
@@ -326,7 +327,7 @@
             this._formAdd_textBoxAliasTable.Location = new System.Drawing.Point(38, 7);
             this._formAdd_textBoxAliasTable.Name = "_formAdd_textBoxAliasTable";
             this._formAdd_textBoxAliasTable.Size = new System.Drawing.Size(133, 20);
-            this._formAdd_textBoxAliasTable.TabIndex = 4;
+            this._formAdd_textBoxAliasTable.TabIndex = 20;
             this._formAdd_textBoxAliasTable.TextChanged += new System.EventHandler(this._formAdd_textBoxAliasTable_TextChanged);
             // 
             // label4
@@ -348,7 +349,7 @@
             this._formAdd_listBoxTables.MultiColumn = true;
             this._formAdd_listBoxTables.Name = "_formAdd_listBoxTables";
             this._formAdd_listBoxTables.Size = new System.Drawing.Size(184, 264);
-            this._formAdd_listBoxTables.TabIndex = 15;
+            this._formAdd_listBoxTables.TabIndex = 17;
             this._formAdd_listBoxTables.SelectedIndexChanged += new System.EventHandler(this._formAdd_listBoxTables_SelectedIndexChanged);
             // 
             // groupBox2
@@ -364,7 +365,7 @@
             this.groupBox2.Location = new System.Drawing.Point(210, 11);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(232, 375);
-            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Columnas";
             // 
@@ -377,7 +378,7 @@
             this.groupBox1.Location = new System.Drawing.Point(4, 11);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 371);
-            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Origen";
             // 
@@ -419,7 +420,7 @@
             this._formAdd_buttonDownTable.Location = new System.Drawing.Point(198, 48);
             this._formAdd_buttonDownTable.Name = "_formAdd_buttonDownTable";
             this._formAdd_buttonDownTable.Size = new System.Drawing.Size(23, 23);
-            this._formAdd_buttonDownTable.TabIndex = 17;
+            this._formAdd_buttonDownTable.TabIndex = 19;
             this._formAdd_buttonDownTable.UseVisualStyleBackColor = true;
             this._formAdd_buttonDownTable.Click += new System.EventHandler(this._formAdd_buttonDownTable_Click);
             // 
@@ -430,7 +431,7 @@
             this._formAdd_buttonUpTable.Location = new System.Drawing.Point(198, 19);
             this._formAdd_buttonUpTable.Name = "_formAdd_buttonUpTable";
             this._formAdd_buttonUpTable.Size = new System.Drawing.Size(23, 23);
-            this._formAdd_buttonUpTable.TabIndex = 16;
+            this._formAdd_buttonUpTable.TabIndex = 18;
             this._formAdd_buttonUpTable.UseVisualStyleBackColor = true;
             this._formAdd_buttonUpTable.Click += new System.EventHandler(this._formAdd_buttonUpTable_Click);
             // 
@@ -441,7 +442,7 @@
             this._formAdd_buttonFilter.Location = new System.Drawing.Point(203, 125);
             this._formAdd_buttonFilter.Name = "_formAdd_buttonFilter";
             this._formAdd_buttonFilter.Size = new System.Drawing.Size(23, 23);
-            this._formAdd_buttonFilter.TabIndex = 16;
+            this._formAdd_buttonFilter.TabIndex = 11;
             this._formAdd_buttonFilter.UseVisualStyleBackColor = true;
             this._formAdd_buttonFilter.Click += new System.EventHandler(this._formAdd_buttonFilter_Click);
             // 
@@ -452,7 +453,7 @@
             this._formAdd_buttonDelete.Location = new System.Drawing.Point(203, 96);
             this._formAdd_buttonDelete.Name = "_formAdd_buttonDelete";
             this._formAdd_buttonDelete.Size = new System.Drawing.Size(23, 23);
-            this._formAdd_buttonDelete.TabIndex = 15;
+            this._formAdd_buttonDelete.TabIndex = 10;
             this._formAdd_buttonDelete.UseVisualStyleBackColor = true;
             this._formAdd_buttonDelete.Click += new System.EventHandler(this._formAdd_buttonDelete_Click);
             // 
@@ -463,7 +464,7 @@
             this._formAdd_buttonDownColumn.Location = new System.Drawing.Point(203, 48);
             this._formAdd_buttonDownColumn.Name = "_formAdd_buttonDownColumn";
             this._formAdd_buttonDownColumn.Size = new System.Drawing.Size(23, 23);
-            this._formAdd_buttonDownColumn.TabIndex = 14;
+            this._formAdd_buttonDownColumn.TabIndex = 9;
             this._formAdd_buttonDownColumn.UseVisualStyleBackColor = true;
             this._formAdd_buttonDownColumn.Click += new System.EventHandler(this._formAdd_buttonDownColumn_Click);
             // 
@@ -474,7 +475,7 @@
             this._formAdd_buttonUpColumn.Location = new System.Drawing.Point(203, 19);
             this._formAdd_buttonUpColumn.Name = "_formAdd_buttonUpColumn";
             this._formAdd_buttonUpColumn.Size = new System.Drawing.Size(23, 23);
-            this._formAdd_buttonUpColumn.TabIndex = 13;
+            this._formAdd_buttonUpColumn.TabIndex = 8;
             this._formAdd_buttonUpColumn.UseVisualStyleBackColor = true;
             this._formAdd_buttonUpColumn.Click += new System.EventHandler(this._formAdd_buttonUpColumn_Click);
             // 
@@ -486,10 +487,10 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this._formAdd_panelTop);
             this.ForeColor = System.Drawing.SystemColors.Control;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAdd";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TSReports";
+            this.Text = "Agregar Reporte";
             this.Load += new System.EventHandler(this.FormAdd_Load);
             this._formAdd_panelPropColumns.ResumeLayout(false);
             this._formAdd_panelPropColumns.PerformLayout();
