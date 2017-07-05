@@ -49,7 +49,7 @@
             this._formLogin_groupBox1.Controls.Add(this._formLogin_textBox_username);
             this._formLogin_groupBox1.Location = new System.Drawing.Point(12, 12);
             this._formLogin_groupBox1.Name = "_formLogin_groupBox1";
-            this._formLogin_groupBox1.Size = new System.Drawing.Size(318, 139);
+            this._formLogin_groupBox1.Size = new System.Drawing.Size(251, 139);
             this._formLogin_groupBox1.TabIndex = 0;
             this._formLogin_groupBox1.TabStop = false;
             this._formLogin_groupBox1.Text = "Login";
@@ -76,7 +76,7 @@
             // 
             this._formLogin_button_login.Location = new System.Drawing.Point(6, 106);
             this._formLogin_button_login.Name = "_formLogin_button_login";
-            this._formLogin_button_login.Size = new System.Drawing.Size(306, 23);
+            this._formLogin_button_login.Size = new System.Drawing.Size(236, 23);
             this._formLogin_button_login.TabIndex = 2;
             this._formLogin_button_login.Text = "Ingresar";
             this._formLogin_button_login.UseVisualStyleBackColor = true;
@@ -88,7 +88,7 @@
             this._formLogin_textBox_password.MaxLength = 30;
             this._formLogin_textBox_password.Name = "_formLogin_textBox_password";
             this._formLogin_textBox_password.PasswordChar = '*';
-            this._formLogin_textBox_password.Size = new System.Drawing.Size(241, 20);
+            this._formLogin_textBox_password.Size = new System.Drawing.Size(175, 20);
             this._formLogin_textBox_password.TabIndex = 1;
             this._formLogin_textBox_password.UseSystemPasswordChar = true;
             // 
@@ -97,7 +97,7 @@
             this._formLogin_textBox_username.Location = new System.Drawing.Point(67, 35);
             this._formLogin_textBox_username.MaxLength = 30;
             this._formLogin_textBox_username.Name = "_formLogin_textBox_username";
-            this._formLogin_textBox_username.Size = new System.Drawing.Size(241, 20);
+            this._formLogin_textBox_username.Size = new System.Drawing.Size(175, 20);
             this._formLogin_textBox_username.TabIndex = 0;
             // 
             // FormLogin
@@ -106,7 +106,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(342, 163);
+            this.ClientSize = new System.Drawing.Size(274, 166);
             this.Controls.Add(this._formLogin_groupBox1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

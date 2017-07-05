@@ -121,6 +121,10 @@ namespace TSReports.Views
                     if (_t == campo.tabla && _t.campos.Count == 1) {
                         _formAdd_listBoxTables.Items.Remove(_t);
                         i--;
+                        if (_t.relacion != null) {
+                            _formAdd_listBoxTables.Items.Remove(_t.relacion.campodestino.tabla);
+                        }
+                        
                     }
                 }
                 //remove columns
@@ -251,11 +255,21 @@ namespace TSReports.Views
         }
 
         //consulto relaciones intermedias.
-        private bool Relacionar(Tabla tabla , int iddestino)
+        private bool Relacionar(Tabla t_destino , int iddestino)
         {
-            if (this._formAdd_listBoxColumns.Items.Count == 0) { return true; }//si es la primera tabla
+            if (this._formAdd_listBoxTables.Items.Count == 0) { return true; }//si es la primera tabla
+            Tabla t_origen = null;
+            if (this._formAdd_listBoxTables.Items.Count > 1) {
+                FormElegirTabla formet = new FormElegirTabla(t_destino.titulo, _formAdd_listBoxTables.Items);
+                if (formet.ShowDialog() == DialogResult.OK) {
+                    t_origen = formet.getTablaSeleccionada();
+                } else {
+                    return false;
+                }
+            } else {
+                t_origen = (Tabla)this._formAdd_listBoxTables.Items[0];
+            }
 
-            Tabla t_origen = ((Campo)this._formAdd_listBoxColumns.Items[_formAdd_listBoxColumns.Items.Count - 1]).tabla;
             dynamic resp = Tablas.Instance.Relaciones(new List<int>() { t_origen.id }, new List<int>() { iddestino });
             if (resp != null) {
                 if(resp.data == null) {
@@ -263,9 +277,9 @@ namespace TSReports.Views
                 }else if ((resp.data[0]).discriminador == "unico") {
                     dynamic destino = (resp.data[0]).destino[0];
                     dynamic campos = destino.campos[0];
-                    tabla.relacion = new Relacion();
-                    tabla.relacion.campoorigen = GetOriginalCampo((int)campos.id_campo_origen);
-                    tabla.relacion.campodestino = GetOriginalCampo((int)campos.id_campo_destino);
+                    t_destino.relacion = new Relacion();
+                    t_destino.relacion.campoorigen = GetOriginalCampo((int)campos.id_campo_origen);
+                    t_destino.relacion.campodestino = GetOriginalCampo((int)campos.id_campo_destino);
                     return true;
                 } else {
                     FormChooseTable formct = new FormChooseTable(resp);
@@ -274,21 +288,23 @@ namespace TSReports.Views
                         int idcampoorigen = f_resp.relacionorigen.campoorigen.id_campo_origen; 
                         int idcampodestino = f_resp.relacionorigen.campoorigen.id_campo_destino;
                         //la tabla para el listbox la busco en las relaciones destino de las tablas
-                        tabla.relacion = new Relacion();
-                        tabla.relacion.campoorigen = GetOriginalCampo(idcampoorigen);
-                        tabla.relacion.campodestino = GetOriginalCampo(idcampodestino);
+                        t_destino.relacion = new Relacion();
+                        t_destino.relacion.campoorigen = GetOriginalCampo(idcampoorigen);
+                        t_destino.relacion.campodestino = GetOriginalCampo(idcampodestino);
 
                         idcampoorigen = f_resp.relaciondestino.campoorigen.id_campo_origen;
                         idcampodestino = f_resp.relaciondestino.campoorigen.id_campo_destino;
 
-                        Tabla _t = tabla.relacion.campodestino.tabla;
+                        Tabla _t = t_destino.relacion.campodestino.tabla;
                         _t.alias = Utils.Utils.TableAlias();
                         _t.relacion = new Relacion();
                         _t.relacion.campoorigen = GetOriginalCampo(idcampoorigen);
                         _t.relacion.campodestino = GetOriginalCampo(idcampodestino);
                         _t.relacion.campodestino.tabla = t_origen;
+                        _t.relacion.campoorigen.tabla = t_destino;
 
-                        _formAdd_listBoxTables.Items.Add(_t); 
+                        _formAdd_listBoxTables.Items.Add(_t);
+
 
                         return true;
                     }
@@ -511,9 +527,33 @@ namespace TSReports.Views
                     _formAdd_rbSQL.Text += "SELECT * FROM "+_t.nombre+" "+_t.alias+"\n";
                     from = true;
                 } else {
-                    _formAdd_rbSQL.Text += "LEFT JOIN " + _t.nombre + " " + _t.alias + " ON "+_t.alias+"."+_t.relacion.campoorigen.nombre+" = "+ _t.relacion.campodestino.tabla.alias + "."+_t.relacion.campodestino.nombre + "\n";
+                    if (_t.relacion == null) {
+                        _formAdd_rbSQL.Text += " RELACION NULL DE " + _t.nombre + " "+ _t.alias;
+                    } else {
+                        _formAdd_rbSQL.Text += "LEFT JOIN " + _t.nombre + " " + _t.alias + " ON " + _t.alias + "." + _t.relacion.campoorigen.nombre + " = " + _t.relacion.campodestino.tabla.alias + "." + _t.relacion.campodestino.nombre + "\n";
+                    }
+                    
+                } 
+            }
+
+            foreach (Tabla _t in this._formAdd_listBoxTables.Items) {
+                _formAdd_rbSQL.Text += _t.titulo +" "+ _t.alias + " -> ";
+                if(_t.relacion != null) {
+                    if(_t.relacion.campoorigen != null) {
+                        _formAdd_rbSQL.Text += "_" + _t.relacion.campoorigen.tabla.titulo;
+                    } else {
+                        _formAdd_rbSQL.Text += "ORIGEN NULL ";
+                    }
+
+                    if (_t.relacion.campodestino != null) {
+                        _formAdd_rbSQL.Text += "_"+_t.relacion.campodestino.tabla.titulo;
+                    } else {
+                        _formAdd_rbSQL.Text += "DESTINO NULL ";
+                    }
+                } else {
+                    _formAdd_rbSQL.Text += "RELACION NULL ";
                 }
-                
+                _formAdd_rbSQL.Text += "\n";
             }
         }
     }
