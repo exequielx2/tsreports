@@ -66,7 +66,7 @@ namespace TSReports.Views
                     foreach (dynamic destinos in objresp.destino)
                     {
                         TreeNode nododestino = new TreeNode((string)destinos.nombre);
-                        nododestino.Tag = new { id = destinos.id, nombre = destinos.nombre };
+                        nododestino.Tag = new { id = destinos.id, nombre = destinos.nombre, titulo = destinos.titulo};
                         int indexdestino = treeView1.Nodes.Add(nododestino);
                         tree1aux.Nodes.Add((TreeNode)nododestino.Clone());
                         foreach (dynamic campos in destinos.campos)
@@ -84,7 +84,7 @@ namespace TSReports.Views
                     foreach (dynamic destinos in objresp.destino)
                     {
                         TreeNode nododestino = new TreeNode((string)objresp.nombre);
-                        nododestino.Tag = new { id = destinos.id, nombre = destinos.nombre };
+                        nododestino.Tag = new { id = destinos.id, nombre = destinos.nombre, titulo = destinos.titulo };
                         int indexdestino = treeView2.Nodes.Add(nododestino);
                         tree2aux.Nodes.Add((TreeNode)nododestino.Clone());
                         groupBox3.Text = destinos.nombre+" desde: " ;
